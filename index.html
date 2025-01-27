@@ -103,19 +103,6 @@
         audio {
             width: 300px; /* Make audio player fit into aesthetic */
         }
-        .mobile-back-arrow {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 20px;
-            color: white;
-            background-color: black;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            z-index: 1001;
-            display: none; /* Only visible on mobile */
-        }
         @media (max-width: 768px) {
             header {
                 display: flex; /* Show header on mobile */
@@ -126,14 +113,10 @@
             .gallery {
                 text-align: center;
             }
-            .mobile-back-arrow {
-                display: block; /* Show back arrow on mobile */
-            }
         }
     </style>
 </head>
 <body>
-    <div class="mobile-back-arrow" id="mobileBackArrow" onclick="showHome()">← Back</div>
     <header>
         <img src="ressource/headerwhite.png" alt="L-DuP Photography Logo" onclick="showHome()">
         <div class="navigation">
@@ -206,7 +189,6 @@
             ],
         };
 
-
         function isMobileDevice() {
             return window.innerWidth <= 768; // Detect mobile devices
         }
@@ -215,7 +197,6 @@
             document.getElementById('sidebar').style.display = 'none';
             document.getElementById('gallery').style.display = 'none';
             document.getElementById('aboutMe').style.display = 'none';
-            document.getElementById('mobileBackArrow').style.display = 'none'; // Hide back arrow
         }
 
         function showGallery() {
@@ -264,7 +245,6 @@
                 if (isMobileDevice()) {
                     document.getElementById('sidebar').style.display = 'none'; // Hide sidebar on mobile
                     gallery.style.display = 'block';
-                    document.getElementById('mobileBackArrow').style.display = 'block'; // Show back arrow
                 }
             }
         }
