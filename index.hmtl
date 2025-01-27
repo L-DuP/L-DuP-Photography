@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Photography Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+        }
+
+        .container {
+            display: flex;
+            height: 100%;
+            width: 100%;
+        }
+
+        .sidebar {
+            background-color: #f4f4f4;
+            padding: 20px;
+            width: 250px;
+            overflow-y: auto;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin: 10px 0;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .sidebar a:hover {
+            color: #007BFF;
+        }
+
+        .gallery {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .gallery img {
+            max-width: 80%;
+            height: auto;
+            margin: 20px 0;
+        }
+
+        .audio-player {
+            margin: 20px 0;
+        }
+
+        audio {
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>My Photography Portfolio</h1>
+</header>
+
+<div class="container">
+    <div class="sidebar">
+        <ul>
+            <li><a href="#" onclick="showFolder('folder1')">Folder 1</a></li>
+            <li><a href="#" onclick="showFolder('folder2')">Folder 2</a></li>
+            <li><a href="#" onclick="showFolder('folder3')">Folder 3</a></li>
+        </ul>
+    </div>
+    <div class="gallery" id="gallery">
+        <p>Select a folder to view the photographs.</p>
+    </div>
+</div>
+
+<script>
+    const folders = {
+        folder1: [
+            { type: 'image', src: 'image1.jpg' },
+            { type: 'audio', src: 'audio1.mp3' },
+            { type: 'image', src: 'image2.jpg' },
+        ],
+        folder2: [
+            { type: 'image', src: 'image3.jpg' },
+            { type: 'audio', src: 'audio2.mp3' },
+            { type: 'image', src: 'image4.jpg' },
+        ],
+        folder3: [
+            { type: 'image', src: 'image5.jpg' },
+            { type: 'audio', src: 'audio3.mp3' },
+            { type: 'image', src: 'image6.jpg' },
+        ]
+    };
+
+    function showFolder(folderName) {
+        const gallery = document.getElementById('gallery');
+        gallery.innerHTML = '';
+        
+        if (folders[folderName]) {
+            folders[folderName].forEach(item => {
+                if (item.type === 'image') {
+                    const img = document.createElement('img');
+                    img.src = item.src;
+                    gallery.appendChild(img);
+                } else if (item.type === 'audio') {
+                    const audioContainer = document.createElement('div');
+                    audioContainer.className = 'audio-player';
+
+                    const audio = document.createElement('audio');
+                    audio.controls = true;
+                    audio.src = item.src;
+
+                    audioContainer.appendChild(audio);
+                    gallery.appendChild(audioContainer);
+                }
+            });
+        } else {
+            gallery.innerHTML = '<p>No photos or audio in this folder.</p>';
+        }
+    }
+</script>
+
+</body>
+</html>
