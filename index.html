@@ -103,6 +103,30 @@
         audio {
             width: 300px; /* Make audio player fit into aesthetic */
         }
+        .mobile-back-arrow {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 20px;
+            color: white;
+            background-color: black;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            display: none; /* Only visible on mobile */
+        }
+        .fade-image {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 75%;
+            height: auto;
+            display: none;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
         @media (max-width: 768px) {
             header {
                 display: flex; /* Show header on mobile */
@@ -113,10 +137,15 @@
             .gallery {
                 text-align: center;
             }
+            .mobile-back-arrow {
+                display: block; /* Show back arrow on mobile */
+            }
         }
     </style>
 </head>
 <body>
+    <div class="mobile-back-arrow" id="mobileBackArrow" onclick="showHome()">← Back</div>
+    <img src="ressource/rotate.png" class="fade-image" id="fadeImage" alt="Rotating Image">
     <header>
         <img src="ressource/headerwhite.png" alt="L-DuP Photography Logo" onclick="showHome()">
         <div class="navigation">
@@ -189,6 +218,7 @@
             ],
         };
 
+
         function isMobileDevice() {
             return window.innerWidth <= 768; // Detect mobile devices
         }
@@ -197,6 +227,7 @@
             document.getElementById('sidebar').style.display = 'none';
             document.getElementById('gallery').style.display = 'none';
             document.getElementById('aboutMe').style.display = 'none';
+            document.getElementById('mobileBackArrow').style.display = 'none'; // Hide back arrow
         }
 
         function showGallery() {
@@ -245,12 +276,35 @@
                 if (isMobileDevice()) {
                     document.getElementById('sidebar').style.display = 'none'; // Hide sidebar on mobile
                     gallery.style.display = 'block';
+                    document.getElementById('mobileBackArrow').style.display = 'block'; // Show back arrow
                 }
             }
         }
 
-        // Show the home page on load
-        showHome();
+        // Function to display the fade-in effect on mobile
+        function showFadeImage() {
+            const fadeImage = document.getElementById('fadeImage');
+            fadeImage.style.display = 'block';
+            setTimeout(() => {
+                fadeImage.style.opacity = 1; // Fade in
+            }, 100); // Delay to allow display property to take effect
+
+            setTimeout(() => {
+                fadeImage.style.opacity = 0; // Fade out
+            }, 5100); // Wait for 5 seconds before starting to fade out
+
+            setTimeout(() => {
+                fadeImage.style.display = 'none'; // Hide after fade out
+            }, 7100); // Wait for fade out to finish
+        }
+
+        // Show the home page and fade image on load
+        window.onload = function() {
+            showHome();
+            if (isMobileDevice()) {
+                showFadeImage(); // Show the fade image on mobile
+            }
+        };
     </script>
 </body>
 </html>
