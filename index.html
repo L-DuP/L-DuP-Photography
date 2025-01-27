@@ -108,7 +108,15 @@
         }
         a img {
         cursor: url('ressource/cursor.cur'), pointer;
-    }
+        }
+        .gallery img {
+    width: auto;
+    max-height: 90vh;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+    cursor: url('ressource/cursor.cur'), pointer; /* Custom cursor for images */
+        }
         .fade-image {
             position: fixed;
             top: calc(50% + 150px);
