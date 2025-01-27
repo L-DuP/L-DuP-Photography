@@ -95,7 +95,6 @@
             margin: 10px 0 60px;
             font-size: 14px;
             color: #555;
-            font-weight: bold;
         }
         .audio-player {
             margin: 10px 0;
@@ -234,9 +233,17 @@
                         img.src = item.src;
                         gallery.appendChild(img);
 
+                        // Create a div for the title
+                        const title = document.createElement('div');
+                        title.className = 'description';
+                        title.style.fontWeight = 'bold'; // Make the title bold
+                        title.textContent = item.description.split('|')[0].trim(); // Get the title from the description
+                        gallery.appendChild(title);
+
+                        // Create a div for the rest of the description
                         const desc = document.createElement('div');
                         desc.className = 'description';
-                        desc.textContent = item.description;
+                        desc.textContent = item.description; // Original description text
                         gallery.appendChild(desc);
                     } else if (item.type === 'audio') {
                         const audioContainer = document.createElement('div');
