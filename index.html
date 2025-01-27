@@ -12,7 +12,6 @@
             display: flex;
             height: 100vh;
             overflow: hidden;
-            cursor: url('ressource/cursor.cur'), auto; /* Custom cursor */
         }
         header {
             background-color: #333;
@@ -87,7 +86,7 @@
         }
         .gallery img {
             width: auto;
-            height: 100vh;
+            max-height: 90vh;
             display: block;
             margin: 0 auto;
             object-fit: contain;
@@ -98,11 +97,18 @@
             color: #555;
             font-weight: bold;
         }
-        .audio-player {
-            margin: 10px 0;
-        }
-        audio {
-            width: 300px;
+        .mobile-back-arrow {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 20px;
+            color: white;
+            background-color: black;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            display: none; /* Only visible on mobile */
         }
         @media (max-width: 768px) {
             header {
@@ -111,14 +117,17 @@
             .sidebar {
                 display: none; /* Hide sidebar initially */
             }
-            .gallery img {
-                max-width: 100%;
-                height: auto; /* Scale images on mobile */
+            .gallery {
+                text-align: center;
+            }
+            .mobile-back-arrow {
+                display: block; /* Show back arrow on mobile */
             }
         }
     </style>
 </head>
 <body>
+    <div class="mobile-back-arrow" id="mobileBackArrow" onclick="showHome()">← Back</div>
     <header>
         <img src="ressource/headerwhite.png" alt="L-DuP Photography Logo" onclick="showHome()">
         <div class="navigation">
@@ -200,6 +209,7 @@
             document.getElementById('sidebar').style.display = 'none';
             document.getElementById('gallery').style.display = 'none';
             document.getElementById('aboutMe').style.display = 'none';
+            document.getElementById('mobileBackArrow').style.display = 'none'; // Hide back arrow
         }
 
         function showGallery() {
@@ -230,6 +240,11 @@
                         gallery.appendChild(desc);
                     }
                 });
+                if (isMobileDevice()) {
+                    document.getElementById('sidebar').style.display = 'none'; // Hide sidebar on mobile
+                    gallery.style.display = 'block';
+                    document.getElementById('mobileBackArrow').style.display = 'block'; // Show back arrow
+                }
             }
         }
 
