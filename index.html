@@ -233,9 +233,15 @@
     if (folders[folderName]) {
         folders[folderName].forEach(item => {
             if (item.type === 'image') {
+                const link = document.createElement('a');
+                link.href = item.src;
+                link.target = '_blank'; // Open in a new tab
+
                 const img = document.createElement('img');
                 img.src = item.src;
-                gallery.appendChild(img);
+
+                link.appendChild(img); // Append the image to the link
+                gallery.appendChild(link); // Append the link to the gallery
 
                 // Create a div for the title
                 const title = document.createElement('div');
