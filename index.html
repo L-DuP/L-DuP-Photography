@@ -12,6 +12,7 @@
             display: flex;
             height: 100vh;
             overflow: hidden;
+            flex-direction: column;
         }
         header {
             background-color: #333;
@@ -118,6 +119,23 @@
             transition: opacity 2s ease-in-out;
             z-index: 1002; /* Ensure it's above the header */
         }
+        .homepage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            text-align: center;
+        }
+        .homepage img.logo {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        .homepage .photo-of-the-day {
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
         @media (max-width: 768px) {
             header {
                 display: flex; /* Show header on mobile */
@@ -145,6 +163,12 @@
             <ul>
                 <li><a href="#" onclick="showFolder('folder1')">25.01.2025</a></li>
             </ul>
+        </div>
+        <div class="homepage" id="homepage">
+            <img src="ressource/ldp watermark black.png" class="logo" alt="Logo">
+            <div class="photo-of-the-day">Photo of the Day</div>
+            <img id="photoOfTheDay" src="" alt="Photo of the Day" style="max-height: 300px; margin-bottom: 10px;">
+            <div id="photoTitle" class="title"></div>
         </div>
         <div class="gallery" id="gallery">
             <p>Select a folder to view the photographs.</p>
@@ -213,91 +237,109 @@
             document.getElementById('sidebar').style.display = 'none';
             document.getElementById('gallery').style.display = 'none';
             document.getElementById('aboutMe').style.display = 'none';
+            document.getElementById('homepage').style.display = 'flex';
         }
 
         function showGallery() {
             document.getElementById('sidebar').style.display = 'block';
             document.getElementById('gallery').style.display = 'block';
             document.getElementById('aboutMe').style.display = 'none';
+            document.getElementById('homepage').style.display = 'none';
         }
 
         function showAboutMe() {
             document.getElementById('sidebar').style.display = 'none';
             document.getElementById('gallery').style.display = 'none';
             document.getElementById('aboutMe').style.display = 'block';
+            document.getElementById('homepage').style.display = 'none';
         }
 
         function showFolder(folderName) {
-    const gallery = document.getElementById('gallery');
-    gallery.innerHTML = '';
-    if (folders[folderName]) {
-        folders[folderName].forEach(item => {
-            if (item.type === 'image') {
-                const img = document.createElement('img');
-                img.src = item.src;
-                gallery.appendChild(img);
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = '';
+            if (folders[folderName]) {
+                folders[folderName].forEach(item => {
+                    if (item.type === 'image') {
+                        const img = document.createElement('img');
+                        img.src = item.src;
+                        gallery.appendChild(img);
 
-                // Create a div for the title
-                const title = document.createElement('div');
-                title.className = 'title'; // Use the title class
-                title.textContent = item.description.split('|')[0].trim(); // Get the title from the description
-                gallery.appendChild(title);
+                        // Create a div for the title
+                        const title = document.createElement('div');
+                        title.className = 'title'; // Use the title class
+                        title.textContent = item.description.split('|')[0].trim(); // Get the title from the description
+                        gallery.appendChild(title);
 
-                // Create a div for the rest of the description (without the title)
-                const desc = document.createElement('div');
-                desc.className = 'description';
-                const fullDescription = item.description.split('|').slice(1).join('|').trim(); // Get the rest of the description
-                desc.textContent = fullDescription; // Original description text without the title
-                gallery.appendChild(desc);
-            } else if (item.type === 'audio') {
-                const audioContainer = document.createElement('div');
-                audioContainer.className = 'audio-player';
+                        // Create a div for the rest of the description (without the title)
+                        const desc = document.createElement('div');
+                        desc.className = 'description';
+                        const fullDescription = item.description.split('|').slice(1).join('|').trim(); // Get the rest of the description
+                        desc.textContent = fullDescription; // Original description text without the title
+                        gallery.appendChild(desc);
+                    } else if (item.type === 'audio') {
+                        const audioContainer = document.createElement('div');
+                        audioContainer.className = 'audio-player';
 
-                const audio = document.createElement('audio');
-                audio.controls = true;
-                audio.src = item.src;
-                audioContainer.appendChild(audio);
+                        const audio = document.createElement('audio');
+                        audio.controls = true;
+                        audio.src = item.src;
+                        audioContainer.appendChild(audio);
 
-                const desc = document.createElement('div');
-                desc.className = 'description';
-                desc.textContent = item.description; // Original description text
-                audioContainer.appendChild(desc);
+                        const desc = document.createElement('div');
+                        desc.className = 'description';
+                        desc.textContent = item.description; // Original description text
+                        audioContainer.appendChild(desc);
 
-                gallery.appendChild(audioContainer);
+                        gallery.appendChild(audioContainer);
+                    }
+                });
+                if (isMobileDevice()) {
+                    document.getElementById('sidebar').style.display = 'none'; // Hide sidebar on mobile
+                    gallery.style.display = 'block';
+                }
             }
-        });
-        if (isMobileDevice()) {
-            document.getElementById('sidebar').style.display = 'none'; // Hide sidebar on mobile
-            gallery.style.display = 'block';
         }
-    }
-}
 
+        function getRandomPhoto() {
+            const allImages = folders.folder1.filter(item => item.type === 'image');
+            const randomImage = allImages[Math.floor(Math.random() * allImages.length)];
+            return randomImage;
+        }
 
-        // Function to display the fade-in effect on mobile
-        function showFadeImage() {
-            const fadeImage = document.getElementById('fadeImage');
-            fadeImage.style.display = 'block';
+        function displayPhotoOfTheDay() {
+            const photoOfTheDay = getRandomPhoto();
+            if (photoOfTheDay) {
+                document.getElementById('photoOfTheDay').src = photoOfTheDay.src;
+                document.getElementById('photoTitle').textContent = photoOfTheDay.description.split('|')[0].trim();
+            }
+        }
+
+        function updatePhotoOfTheDayAtMidnight() {
+            const now = new Date();
+            const millisUntilMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0) - now;
             setTimeout(() => {
-                fadeImage.style.opacity = 1; // Fade in
-            }, 100); // Delay to allow display property to take effect
-
-            setTimeout(() => {
-                fadeImage.style.opacity = 0; // Fade out
-            }, 5100); // Wait for 5 seconds before starting to fade out
-
-            setTimeout(() => {
-                fadeImage.style.display = 'none'; // Hide after fade out
-            }, 7100); // Wait for fade out to finish
+                displayPhotoOfTheDay();
+                updatePhotoOfTheDayAtMidnight(); // Schedule the next update
+            }, millisUntilMidnight);
         }
 
         // Show the home page and fade image on load
         window.onload = function() {
             showHome();
+            displayPhotoOfTheDay();
+            updatePhotoOfTheDayAtMidnight();
             if (isMobileDevice()) {
                 showFadeImage(); // Show the fade image on mobile
             }
         };
     </script>
+    <div style="position: fixed; top: 0; left: 50%; transform: translateX(-50%); z-index: 1001;">
+        <img src="ressource/ldp watermark black.png" alt="Logo" style="max-height: 100px; width: auto;">
+    </div>
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+        <div style="font-size: 24px; font-weight: bold; margin-bottom: 20px;">Photo of the Day</div>
+        <img id="photoOfTheDay" src="" alt="Photo of the Day" style="max-height: 500px; width: auto; object-fit: contain; margin-bottom: 10px;">
+        <div id="photoTitle" style="font-size: 18px; font-weight: bold; color: #555;"></div>
+    </div>
 </body>
 </html>
