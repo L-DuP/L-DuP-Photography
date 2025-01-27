@@ -49,6 +49,7 @@
             display: flex;
             height: 100%;
             width: 100%;
+            position: relative; /* To position landing content properly */
         }
         .sidebar {
             background-color: #f4f4f4;
@@ -107,15 +108,7 @@
             width: 300px; /* Make audio player fit into aesthetic */
         }
         a img {
-        cursor: url('ressource/cursor.cur'), pointer;
-        }
-        .gallery img {
-    width: auto;
-    max-height: 90vh;
-    display: block;
-    margin: 0 auto;
-    object-fit: contain;
-    cursor: url('ressource/cursor.cur'), pointer; /* Custom cursor for images */
+            cursor: url('ressource/cursor.cur'), pointer;
         }
         .fade-image {
             position: fixed;
@@ -128,6 +121,29 @@
             opacity: 0;
             transition: opacity 2s ease-in-out;
             z-index: 1002; /* Ensure it's above the header */
+        }
+        .landing {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex: 1;
+            position: absolute; /* Position landing content absolutely */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        .quote-box {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            max-width: 600px;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
         @media (max-width: 768px) {
             header {
@@ -152,6 +168,10 @@
         </div>
     </header>
     <div class="container">
+        <div class="landing" id="landingPage">
+            <img src="ressource/ldp watermark black.png" alt="Logo" style="max-height: 200px; width: auto;">
+            <div class="quote-box" id="quoteBox"></div>
+        </div>
         <div class="sidebar" id="sidebar">
             <ul>
                 <li><a href="#" onclick="showFolder('folder1')">25.01.2025</a></li>
@@ -166,6 +186,89 @@
         </div>
     </div>
     <script>
+        const quotes = [
+            "Photography is the art of freezing time, capturing moments we didn’t know we’d miss — until we realize we’re just one click away from forgetting everything.",
+            "Photography transforms fleeting moments into eternal stories, reminding us that in a single frame, we can capture the infinite beauty of life’s impermanence.",
+            "Through the lens, we discover that every click is a gateway to countless stories, each image a testament to the magic found in the ordinary.",
+            "Photography is the poetry of light, weaving together moments that dance between reality and imagination, inviting us to see the world through a new lens.",
+            "In a single photograph, we hold the power to transcend time, connecting past and present in a visual embrace that sparks wonder and ignites the imagination."
+        ];
+
+        function getQuoteOfTheDay() {
+            const currentDate = new Date();
+            const dayOfYear = Math.floor((currentDate - new Date(currentDate.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+            return quotes[dayOfYear % quotes.length];
+        }
+
+        function isMobileDevice() {
+            return window.innerWidth <= 768; // Detect mobile devices
+        }
+
+        function showHome() {
+            document.getElementById('sidebar').style.display = 'none';
+            document.getElementById('gallery').style.display = 'none';
+            document.getElementById('aboutMe').style.display = 'none';
+            document.getElementById('landingPage').style.display = 'flex';
+            document.getElementById('quoteBox').textContent = getQuoteOfTheDay(); // Set quote
+        }
+
+        function showGallery() {
+            document.getElementById('sidebar').style.display = 'block';
+            document.getElementById('gallery').style.display = 'block';
+            document.getElementById('aboutMe').style.display = 'none';
+            document.getElementById('landingPage').style.display = 'none';
+        }
+
+        function showAboutMe() {
+            document.getElementById('sidebar').style.display = 'none';
+            document.getElementById('gallery').style.display = 'none';
+            document.getElementById('aboutMe').style.display = 'block';
+            document.getElementById('landingPage').style.display = 'none';
+        }
+
+        function showFolder(folderName) {
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = ''; // Clear gallery content
+            if (folders[folderName]) {
+                folders[folderName].forEach(item => {
+                    if (item.type === 'image') {
+                        const img = document.createElement('img');
+                        img.src = item.src;
+
+                        // Add click event to open image in new tab
+                        img.addEventListener('click', function() {
+                            window.open(item.src, '_blank'); // Open image in new tab on click
+                        });
+
+                        gallery.appendChild(img);
+
+                        // Create a div for the title
+                        const title = document.createElement('div');
+                        title.className = 'title';
+                        title.textContent = item.description.split('|')[0].trim();
+                        gallery.appendChild(title);
+
+                        // Create a div for the rest of the description
+                        const description = document.createElement('div');
+                        description.className = 'description';
+                        description.textContent = item.description.split('|')[1].trim();
+                        gallery.appendChild(description);
+
+                        // Add an audio player if provided
+                        if (item.audio) {
+                            const audioPlayer = document.createElement('audio');
+                            audioPlayer.className = 'audio-player';
+                            audioPlayer.controls = true;
+                            const source = document.createElement('source');
+                            source.src = item.audio;
+                            audioPlayer.appendChild(source);
+                            gallery.appendChild(audioPlayer);
+                        }
+                    }
+                });
+            }
+        }
+
         const folders = {
             folder1: [
                 { 
@@ -216,106 +319,9 @@
             ],
         };
 
-        function isMobileDevice() {
-            return window.innerWidth <= 768; // Detect mobile devices
-        }
 
-        function showHome() {
-            document.getElementById('sidebar').style.display = 'none';
-            document.getElementById('gallery').style.display = 'none';
-            document.getElementById('aboutMe').style.display = 'none';
-        }
-
-        function showGallery() {
-            document.getElementById('sidebar').style.display = 'block';
-            document.getElementById('gallery').style.display = 'block';
-            document.getElementById('aboutMe').style.display = 'none';
-        }
-
-        function showAboutMe() {
-            document.getElementById('sidebar').style.display = 'none';
-            document.getElementById('gallery').style.display = 'none';
-            document.getElementById('aboutMe').style.display = 'block';
-        }
-
-        function showFolder(folderName) {
-    const gallery = document.getElementById('gallery');
-    gallery.innerHTML = ''; // Clear gallery content
-    if (folders[folderName]) {
-        folders[folderName].forEach(item => {
-            if (item.type === 'image') {
-                const img = document.createElement('img');
-                img.src = item.src;
-
-                // Add click event to open image in new tab
-                img.addEventListener('click', function() {
-                    window.open(item.src, '_blank'); // Open image in new tab on click
-                });
-
-                gallery.appendChild(img);
-
-                // Create a div for the title
-                const title = document.createElement('div');
-                title.className = 'title';
-                title.textContent = item.description.split('|')[0].trim();
-                gallery.appendChild(title);
-
-                // Create a div for the rest of the description
-                const desc = document.createElement('div');
-                desc.className = 'description';
-                const fullDescription = item.description.split('|').slice(1).join('|').trim();
-                desc.textContent = fullDescription;
-                gallery.appendChild(desc);
-            } else if (item.type === 'audio') {
-                const audioContainer = document.createElement('div');
-                audioContainer.className = 'audio-player';
-
-                const audio = document.createElement('audio');
-                audio.controls = true;
-                audio.src = item.src;
-                audioContainer.appendChild(audio);
-
-                const desc = document.createElement('div');
-                desc.className = 'description';
-                desc.textContent = item.description;
-                audioContainer.appendChild(desc);
-
-                gallery.appendChild(audioContainer);
-            }
-        });
-
-        if (isMobileDevice()) {
-            document.getElementById('sidebar').style.display = 'none'; // Hide sidebar on mobile
-            gallery.style.display = 'block';
-        }
-    }
-}
-
-
-        // Function to display the fade-in effect on mobile
-        function showFadeImage() {
-            const fadeImage = document.getElementById('fadeImage');
-            fadeImage.style.display = 'block';
-            setTimeout(() => {
-                fadeImage.style.opacity = 1; // Fade in
-            }, 100); // Delay to allow display property to take effect
-
-            setTimeout(() => {
-                fadeImage.style.opacity = 0; // Fade out
-            }, 5100); // Wait for 5 seconds before starting to fade out
-
-            setTimeout(() => {
-                fadeImage.style.display = 'none'; // Hide after fade out
-            }, 7100); // Wait for fade out to finish
-        }
-
-        // Show the home page and fade image on load
-        window.onload = function() {
-            showHome();
-            if (isMobileDevice()) {
-                showFadeImage(); // Show the fade image on mobile
-            }
-        };
+        // Show landing page on load
+        showHome();
     </script>
 </body>
 </html>
