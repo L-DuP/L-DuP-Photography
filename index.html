@@ -228,50 +228,51 @@
         }
 
         function showFolder(folderName) {
-            const gallery = document.getElementById('gallery');
-            gallery.innerHTML = '';
-            if (folders[folderName]) {
-                folders[folderName].forEach(item => {
-                    if (item.type === 'image') {
-                        const img = document.createElement('img');
-                        img.src = item.src;
-                        gallery.appendChild(img);
+    const gallery = document.getElementById('gallery');
+    gallery.innerHTML = '';
+    if (folders[folderName]) {
+        folders[folderName].forEach(item => {
+            if (item.type === 'image') {
+                const img = document.createElement('img');
+                img.src = item.src;
+                gallery.appendChild(img);
 
-                        // Create a div for the title
-                        const title = document.createElement('div');
-                        title.className = 'title'; // Use the new title class
-                        title.style.marginTop = '5px'; // Space between image and title
-                        title.textContent = item.description.split('|')[0].trim(); // Get the title from the description
-                        gallery.appendChild(title);
+                // Create a div for the title
+                const title = document.createElement('div');
+                title.className = 'title'; // Use the title class
+                title.textContent = item.description.split('|')[0].trim(); // Get the title from the description
+                gallery.appendChild(title);
 
-                        // Create a div for the rest of the description
-                        const desc = document.createElement('div');
-                        desc.className = 'description';
-                        desc.textContent = item.description; // Original description text
-                        gallery.appendChild(desc);
-                    } else if (item.type === 'audio') {
-                        const audioContainer = document.createElement('div');
-                        audioContainer.className = 'audio-player';
+                // Create a div for the rest of the description (without the title)
+                const desc = document.createElement('div');
+                desc.className = 'description';
+                const fullDescription = item.description.split('|').slice(1).join('|').trim(); // Get the rest of the description
+                desc.textContent = fullDescription; // Original description text without the title
+                gallery.appendChild(desc);
+            } else if (item.type === 'audio') {
+                const audioContainer = document.createElement('div');
+                audioContainer.className = 'audio-player';
 
-                        const audio = document.createElement('audio');
-                        audio.controls = true;
-                        audio.src = item.src;
-                        audioContainer.appendChild(audio);
+                const audio = document.createElement('audio');
+                audio.controls = true;
+                audio.src = item.src;
+                audioContainer.appendChild(audio);
 
-                        const desc = document.createElement('div');
-                        desc.className = 'description';
-                        desc.textContent = item.description;
-                        audioContainer.appendChild(desc);
+                const desc = document.createElement('div');
+                desc.className = 'description';
+                desc.textContent = item.description; // Original description text
+                audioContainer.appendChild(desc);
 
-                        gallery.appendChild(audioContainer);
-                    }
-                });
-                if (isMobileDevice()) {
-                    document.getElementById('sidebar').style.display = 'none'; // Hide sidebar on mobile
-                    gallery.style.display = 'block';
-                }
+                gallery.appendChild(audioContainer);
             }
+        });
+        if (isMobileDevice()) {
+            document.getElementById('sidebar').style.display = 'none'; // Hide sidebar on mobile
+            gallery.style.display = 'block';
         }
+    }
+}
+
 
         // Function to display the fade-in effect on mobile
         function showFadeImage() {
