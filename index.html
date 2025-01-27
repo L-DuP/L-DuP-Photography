@@ -103,12 +103,25 @@
         audio {
             width: 300px;
         }
+        .toggle-sidebar {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            display: none;
+            z-index: 2000;
+        }
         @media (max-width: 768px) {
             header {
                 display: none; /* Hide header on mobile */
             }
-            .sidebar {
-                display: none; /* Hide sidebar on mobile */
+            .toggle-sidebar {
+                display: block; /* Show the toggle button on mobile */
             }
             .gallery img {
                 max-width: 100%;
@@ -118,6 +131,7 @@
     </style>
 </head>
 <body>
+    <button class="toggle-sidebar" id="toggleSidebar" onclick="toggleSidebar()">&#x25C0;</button>
     <header>
         <img src="ressource/headerwhite.png" alt="L-DuP Photography Logo" onclick="showHome()">
         <div class="navigation">
@@ -142,84 +156,49 @@
     <script>
         const folders = {
             folder1: [
-                { 
-                    type: 'image', 
-                    src: 'images/01 Steps 1.jpg', 
-                    description: 'Steps 1 | 25.01.2025 | Thüringer Bahnhof, Halle (Saale) | Lars Weigmann' 
-                },
-                { 
-                    type: 'image', 
-                    src: 'images/02 Steps 2.jpg', 
-                    description: 'Steps 2 | 25.01.2025 | Thüringer Bahnhof, Halle (Saale) | Lars Weigmann' 
-                },
-                { 
-                    type: 'image', 
-                    src: 'images/03 Guardian.jpg', 
-                    description: 'Guardian | 25.01.2025 | Thüringer Bahnhof, Halle (Saale) | Lars Weigmann' 
-                },
-                { 
-                    type: 'audio', 
-                    src: 'audio/250125-092102 - Thüringer Bahnhof.mp3', 
-                    description: 'Thüringer Bahnhof, Halle (Saale) | 25.01.2025 09:21 | Lars Weigmann' 
-                },
-                { 
-                    type: 'image', 
-                    src: 'images/04 Top Hat.jpg', 
-                    description: 'Top Hat | 25.01.2025 | Hafenbahntrasse, Halle (Saale) | Lars Weigmann' 
-                },
-                { 
-                    type: 'image', 
-                    src: 'images/05 Peek.jpg', 
-                    description: 'Peek | 25.01.2025 | Bunabrunnen, Merseburger Straße, Halle (Saale) | Lars Weigmann' 
-                },
-                { 
-                    type: 'image', 
-                    src: 'images/06 Edge.jpg', 
-                    description: 'Edge | 25.01.2025 | Bunabrunnen, Merseburger Straße, Halle (Saale) | Lars Weigmann' 
-                },
-                { 
-                    type: 'audio', 
-                    src: 'audio/250125-101100 - Merseburger Straße Bunabrunnen.mp3', 
-                    description: 'Bunabrunnen, Merseburger Straße, Halle (Saale) | 25.01.2025 10:11 | Lars Weigmann' 
-                },
-                { 
-                    type: 'image', 
-                    src: 'images/07 Time.jpg', 
-                    description: 'Time | 25.01.2025 | Lutherkirche, Am Grünen Feld, Halle (Saale) | Lars Weigmann' 
-                },
+                { type: 'image', src: 'images/01 Steps 1.jpg', description: 'Steps 1 | 25.01.2025 | Thüringer Bahnhof, Halle (Saale) | Lars Weigmann' },
+                { type: 'image', src: 'images/02 Steps 2.jpg', description: 'Steps 2 | 25.01.2025 | Thüringer Bahnhof, Halle (Saale) | Lars Weigmann' },
+                { type: 'image', src: 'images/03 Guardian.jpg', description: 'Guardian | 25.01.2025 | Thüringer Bahnhof, Halle (Saale) | Lars Weigmann' },
+                { type: 'audio', src: 'audio/250125-092102 - Thüringer Bahnhof.mp3', description: 'Thüringer Bahnhof, Halle (Saale) | 25.01.2025 09:21 | Lars Weigmann' },
             ],
         };
 
         function isMobileDevice() {
-            return window.innerWidth <= 768; // Detect mobile devices
+            return window.innerWidth <= 768;
         }
 
-        function adjustForMobile() {
-            if (isMobileDevice()) {
-                document.getElementById('sidebar').style.display = 'none';
-                document.querySelector('header').style.display = 'none';
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const toggleButton = document.getElementById('toggleSidebar');
+            if (sidebar.style.display === 'none' || sidebar.style.display === '') {
+                sidebar.style.display = 'block';
+                toggleButton.innerHTML = '&#x25C0;'; // Left arrow
+            } else {
+                sidebar.style.display = 'none';
+                toggleButton.innerHTML = '&#x25B6;'; // Right arrow
             }
         }
 
         function showHome() {
-            document.getElementById('sidebar').style.display = 'none';
+            document.getElementById('sidebar').style.display = isMobileDevice() ? 'block' : 'flex';
             document.getElementById('gallery').style.display = 'none';
             document.getElementById('aboutMe').style.display = 'none';
+            if (isMobileDevice()) document.getElementById('toggleSidebar').style.display = 'none';
         }
 
         function showGallery() {
-            document.getElementById('sidebar').style.display = 'block';
+            document.getElementById('sidebar').style.display = isMobileDevice() ? 'none' : 'block';
             document.getElementById('gallery').style.display = 'block';
             document.getElementById('aboutMe').style.display = 'none';
-            showFolder('folder1'); 
-            adjustForMobile();
+            if (isMobileDevice()) document.getElementById('toggleSidebar').style.display = 'block';
+            showFolder('folder1');
         }
 
         function showAboutMe() {
             document.getElementById('sidebar').style.display = 'none';
             document.getElementById('gallery').style.display = 'none';
             document.getElementById('aboutMe').style.display = 'block';
-            adjustForMobile();
+            if (isMobileDevice()) document.getElementById('toggleSidebar').style.display = 'block';
         }
 
         function showFolder(folderName) {
@@ -231,7 +210,7 @@
                         const img = document.createElement('img');
                         img.src = item.src;
                         gallery.appendChild(img);
-                        
+
                         const desc = document.createElement('div');
                         desc.className = 'description';
                         desc.textContent = item.description;
@@ -239,12 +218,12 @@
                     } else if (item.type === 'audio') {
                         const audioContainer = document.createElement('div');
                         audioContainer.className = 'audio-player';
-                        
+
                         const audio = document.createElement('audio');
                         audio.controls = true;
                         audio.src = item.src;
                         audioContainer.appendChild(audio);
-                        
+
                         gallery.appendChild(audioContainer);
 
                         const desc = document.createElement('div');
@@ -258,8 +237,7 @@
             }
         }
 
-        // Show the home page on load
-        showHome();
+        showHome(); // Initialize on home view
     </script>
 </body>
 </html>
