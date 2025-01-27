@@ -97,6 +97,12 @@
             color: #555;
             font-weight: bold;
         }
+        .audio-player {
+            margin: 10px 0;
+        }
+        audio {
+            width: 100%; /* Make audio player responsive */
+        }
         .mobile-back-arrow {
             position: absolute;
             top: 10px;
@@ -163,43 +169,17 @@
                     description: 'Steps 2 | 25.01.2025 | Thüringer Bahnhof, Halle (Saale) | Lars Weigmann' 
                 },
                 { 
-                    type: 'image', 
-                    src: 'images/03 Guardian.jpg', 
-                    description: 'Guardian | 25.01.2025 | Thüringer Bahnhof, Halle (Saale) | Lars Weigmann' 
-                },
-                { 
                     type: 'audio', 
                     src: 'audio/250125-092102 - Thüringer Bahnhof.mp3', 
                     description: 'Thüringer Bahnhof, Halle (Saale) | 25.01.2025 09:21 | Lars Weigmann' 
-                },
-                { 
-                    type: 'image', 
-                    src: 'images/04 Top Hat.jpg', 
-                    description: 'Top Hat | 25.01.2025 | Hafenbahntrasse, Halle (Saale) | Lars Weigmann' 
-                },
-                { 
-                    type: 'image', 
-                    src: 'images/05 Peek.jpg', 
-                    description: 'Peek | 25.01.2025 | Bunabrunnen, Merseburger Straße, Halle (Saale) | Lars Weigmann' 
-                },
-                { 
-                    type: 'image', 
-                    src: 'images/06 Edge.jpg', 
-                    description: 'Edge | 25.01.2025 | Bunabrunnen, Merseburger Straße, Halle (Saale) | Lars Weigmann' 
                 },
                 { 
                     type: 'audio', 
                     src: 'audio/250125-101100 - Merseburger Straße Bunabrunnen.mp3', 
                     description: 'Bunabrunnen, Merseburger Straße, Halle (Saale) | 25.01.2025 10:11 | Lars Weigmann' 
                 },
-                { 
-                    type: 'image', 
-                    src: 'images/07 Time.jpg', 
-                    description: 'Time | 25.01.2025 | Lutherkirche, Am Grünen Feld, Halle (Saale) | Lars Weigmann' 
-                },
             ],
         };
-
 
         function isMobileDevice() {
             return window.innerWidth <= 768; // Detect mobile devices
@@ -238,6 +218,21 @@
                         desc.className = 'description';
                         desc.textContent = item.description;
                         gallery.appendChild(desc);
+                    } else if (item.type === 'audio') {
+                        const audioContainer = document.createElement('div');
+                        audioContainer.className = 'audio-player';
+
+                        const audio = document.createElement('audio');
+                        audio.controls = true;
+                        audio.src = item.src;
+                        audioContainer.appendChild(audio);
+
+                        const desc = document.createElement('div');
+                        desc.className = 'description';
+                        desc.textContent = item.description;
+                        audioContainer.appendChild(desc);
+
+                        gallery.appendChild(audioContainer);
                     }
                 });
                 if (isMobileDevice()) {
