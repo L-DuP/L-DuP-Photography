@@ -12,7 +12,6 @@
             display: flex;
             height: 100vh;
             overflow: hidden;
-            flex-direction: column;
         }
         header {
             background-color: #333;
@@ -23,6 +22,8 @@
             z-index: 1000;
             display: flex; /* Use flexbox for alignment */
             align-items: center; /* Center items vertically */
+            width: 250px; /* Same width as the sidebar */
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow for separation */
         }
         header img {
             max-height: 200px;
@@ -49,8 +50,6 @@
             padding: 20px;
             width: 250px;
             overflow-y: auto;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            display: none; /* Initially hidden */
         }
         .sidebar ul {
             list-style: none;
