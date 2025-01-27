@@ -20,25 +20,30 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            display: flex; /* Use flexbox for alignment */
-            align-items: center; /* Center items vertically */
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: flex-start; /* Align items to the left */
             width: 250px; /* Same width as the sidebar */
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow for separation */
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
         }
         header img {
             max-height: 200px;
             width: auto;
             display: block;
             cursor: pointer; /* Change cursor for interactivity */
+            margin-bottom: 10px; /* Space below the logo */
         }
         .navigation {
-            margin-left: 20px; /* Space between logo and navigation */
+            margin-left: 0; /* No left margin since items are stacked */
+            display: flex;
+            flex-direction: column; /* Stack links vertically */
         }
         .navigation a {
-            margin: 0 15px;
-            color: #007BFF;
+            margin: 5px 0; /* Vertical spacing between links */
+            color: white; /* Set text color to white */
             text-decoration: none;
             font-weight: bold;
+            font-family: 'Montserrat', sans-serif; /* Change font */
         }
         .container {
             display: flex;
