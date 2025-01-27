@@ -236,17 +236,15 @@
     if (folders[folderName]) {
         folders[folderName].forEach(item => {
             if (item.type === 'image') {
-                const link = document.createElement('a');
-                link.href = item.src;
-                link.target = '_blank';
-
                 const img = document.createElement('img');
                 img.src = item.src;
 
-                // Append the image to the link
-                link.appendChild(img);
+                // Add click event to open image in new tab
+                img.addEventListener('click', function() {
+                    window.open(item.src, '_blank'); // Open image in new tab on click
+                });
 
-                gallery.appendChild(link);
+                gallery.appendChild(img);
 
                 // Create a div for the title
                 const title = document.createElement('div');
