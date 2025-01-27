@@ -18,10 +18,26 @@
             background-color: #333;
             color: white;
             padding: 20px;
-            text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
+            display: flex; /* Use flexbox for alignment */
+            align-items: center; /* Center items vertically */
+        }
+        header img {
+            max-height: 200px;
+            width: auto;
+            display: block;
+            cursor: pointer; /* Change cursor for interactivity */
+        }
+        .navigation {
+            margin-left: 20px; /* Space between logo and navigation */
+        }
+        .navigation a {
+            margin: 0 15px;
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
         }
         .container {
             display: flex;
@@ -81,22 +97,6 @@
         }
         audio {
             width: 300px;
-        }
-        header img {
-            max-height: 200px;
-            width: auto;
-            display: block;
-            margin: 0 auto;
-            cursor: pointer; /* Change cursor for interactivity */
-        }
-        .navigation {
-            margin: 20px 0;
-        }
-        .navigation a {
-            margin: 0 15px;
-            color: #007BFF;
-            text-decoration: none;
-            font-weight: bold;
         }
     </style>
 </head>
