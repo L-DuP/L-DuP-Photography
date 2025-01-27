@@ -55,10 +55,12 @@
             text-align: center;
         }
         .gallery img {
-            max-width: 80%;
-            height: auto;
-            margin: 20px 0;
-        }
+    width: auto; /* Let the width scale automatically */
+    height: 100vh; /* Make the height fill the screen */
+    display: block; /* Center the image block */
+    margin: 0 auto; /* Horizontally center the image */
+    object-fit: contain; /* Ensure the image scales proportionally */
+}
         .audio-player {
             margin: 20px 0;
         }
