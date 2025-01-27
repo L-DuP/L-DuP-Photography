@@ -232,31 +232,33 @@
 
         function showFolder(folderName) {
     const gallery = document.getElementById('gallery');
-    gallery.innerHTML = '';
+    gallery.innerHTML = ''; // Clear gallery content
     if (folders[folderName]) {
         folders[folderName].forEach(item => {
             if (item.type === 'image') {
                 const link = document.createElement('a');
                 link.href = item.src;
-                link.target = '_blank'; // Open in a new tab
+                link.target = '_blank';
 
                 const img = document.createElement('img');
                 img.src = item.src;
 
-                link.appendChild(img); // Append the image to the link
-                gallery.appendChild(link); // Append the link to the gallery
+                // Append the image to the link
+                link.appendChild(img);
+
+                gallery.appendChild(link);
 
                 // Create a div for the title
                 const title = document.createElement('div');
-                title.className = 'title'; // Use the title class
-                title.textContent = item.description.split('|')[0].trim(); // Get the title from the description
+                title.className = 'title';
+                title.textContent = item.description.split('|')[0].trim();
                 gallery.appendChild(title);
 
-                // Create a div for the rest of the description (without the title)
+                // Create a div for the rest of the description
                 const desc = document.createElement('div');
                 desc.className = 'description';
-                const fullDescription = item.description.split('|').slice(1).join('|').trim(); // Get the rest of the description
-                desc.textContent = fullDescription; // Original description text without the title
+                const fullDescription = item.description.split('|').slice(1).join('|').trim();
+                desc.textContent = fullDescription;
                 gallery.appendChild(desc);
             } else if (item.type === 'audio') {
                 const audioContainer = document.createElement('div');
@@ -269,12 +271,13 @@
 
                 const desc = document.createElement('div');
                 desc.className = 'description';
-                desc.textContent = item.description; // Original description text
+                desc.textContent = item.description;
                 audioContainer.appendChild(desc);
 
                 gallery.appendChild(audioContainer);
             }
         });
+
         if (isMobileDevice()) {
             document.getElementById('sidebar').style.display = 'none'; // Hide sidebar on mobile
             gallery.style.display = 'block';
