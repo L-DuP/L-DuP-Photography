@@ -97,7 +97,7 @@
             color: #555;
         }
         .title {
-            margin: 0 0 10px; /* Space between title and description */
+            margin: 15px 0 10px; /* Space between title and description */
             font-weight: bold; /* Bold for the title */
         }
         .audio-player {
@@ -240,6 +240,7 @@
                         // Create a div for the title
                         const title = document.createElement('div');
                         title.className = 'title'; // Use the new title class
+                        title.style.marginTop = '5px'; // Space between image and title
                         title.textContent = item.description.split('|')[0].trim(); // Get the title from the description
                         gallery.appendChild(title);
 
