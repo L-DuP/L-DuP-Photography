@@ -12,7 +12,7 @@
             display: flex;
             height: 100vh;
             overflow: hidden;
-            cursor: url('ressource/cursor.cur'), auto; /* Updated custom cursor */
+            cursor: url('ressource/cursor.cur'), auto; /* Custom cursor */
         }
         header {
             background-color: #333;
@@ -22,29 +22,29 @@
             top: 0;
             z-index: 1000;
             display: flex;
-            flex-direction: column; /* Stack items vertically */
-            align-items: flex-start; /* Align items to the left */
-            width: 250px; /* Same width as the sidebar */
+            flex-direction: column;
+            align-items: flex-start;
+            width: 250px;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
         }
         header img {
             max-height: 200px;
             width: auto;
             display: block;
-            cursor: pointer; /* Change cursor for interactivity */
-            margin-bottom: 10px; /* Space below the logo */
+            cursor: pointer;
+            margin-bottom: 10px;
         }
         .navigation {
-            margin-left: 0; /* No left margin since items are stacked */
+            margin-left: 0;
             display: flex;
-            flex-direction: column; /* Stack links vertically */
+            flex-direction: column;
         }
         .navigation a {
-            margin: 5px 0; /* Vertical spacing between links */
-            color: white; /* Set text color to white */
+            margin: 5px 0;
+            color: white;
             text-decoration: none;
             font-weight: bold;
-            font-family: 'Montserrat', sans-serif; /* Change font */
+            font-family: 'Montserrat', sans-serif;
         }
         .container {
             display: flex;
@@ -77,12 +77,12 @@
             overflow-y: auto;
             padding: 20px;
             text-align: center;
-            display: none; /* Initially hidden */
+            display: none;
         }
         .about-me {
             padding: 20px;
             text-align: center;
-            display: none; /* Initially hidden */
+            display: none;
         }
         .gallery img {
             width: auto;
@@ -102,6 +102,18 @@
         }
         audio {
             width: 300px;
+        }
+        @media (max-width: 768px) {
+            header {
+                display: none; /* Hide header on mobile */
+            }
+            .sidebar {
+                display: none; /* Hide sidebar on mobile */
+            }
+            .gallery img {
+                max-width: 100%;
+                height: auto; /* Scale images on mobile */
+            }
         }
     </style>
 </head>
@@ -178,6 +190,17 @@
             ],
         };
 
+        function isMobileDevice() {
+            return window.innerWidth <= 768; // Detect mobile devices
+        }
+
+        function adjustForMobile() {
+            if (isMobileDevice()) {
+                document.getElementById('sidebar').style.display = 'none';
+                document.querySelector('header').style.display = 'none';
+            }
+        }
+
         function showHome() {
             document.getElementById('sidebar').style.display = 'none';
             document.getElementById('gallery').style.display = 'none';
@@ -188,13 +211,15 @@
             document.getElementById('sidebar').style.display = 'block';
             document.getElementById('gallery').style.display = 'block';
             document.getElementById('aboutMe').style.display = 'none';
-            showFolder('folder1'); // Optionally, load the first folder
+            showFolder('folder1'); 
+            adjustForMobile();
         }
 
         function showAboutMe() {
             document.getElementById('sidebar').style.display = 'none';
             document.getElementById('gallery').style.display = 'none';
             document.getElementById('aboutMe').style.display = 'block';
+            adjustForMobile();
         }
 
         function showFolder(folderName) {
