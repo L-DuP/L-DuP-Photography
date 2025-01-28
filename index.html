@@ -155,6 +155,10 @@
     color: black; /* Set text color to black */
     padding: 20px; /* Optional: add padding for better spacing */
     box-sizing: border-box; /* Include padding in the element's total width/height */
+    overflow: hidden; /* Prevent overflow */
+    display: flex; /* Use flex to help with alignment */
+    align-items: center; /* Center the content vertically */
+    justify-content: center; /* Center the content horizontally */
 }
     </style>
 </head>
@@ -237,12 +241,12 @@
             return window.innerWidth <= 768; // Detect mobile devices
         }
 
-        function showHome() {
+       function showHome() {
     document.getElementById('sidebar').style.display = 'none';
     document.getElementById('gallery').style.display = 'none';
     document.getElementById('aboutMe').style.display = 'none';
-    document.getElementById('landingText').style.display = 'flex'; // Show landing text
-        }
+    document.querySelector('.quote').style.display = 'block'; // Show the quote
+}
 
         function showGallery() {
     document.getElementById('sidebar').style.display = 'block';
