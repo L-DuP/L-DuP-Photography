@@ -33,6 +33,23 @@
             cursor: pointer;
             margin-bottom: 10px;
         }
+        .quote-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: justify;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    max-width: 600px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: block; /* Show only on the main page */
+        }
+
+        #quoteText {
+    line-height: 1.5;
+        }
         .navigation {
             margin-left: 0;
             display: flex;
@@ -103,23 +120,6 @@
         .audio-player {
             margin: 10px 0;
         }
-        .quote-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: justify;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    max-width: 600px;
-    padding: 20px;
-    box-sizing: border-box;
-    display: block; /* Show only on the main page */
-}
-
-#quoteText {
-    line-height: 1.5;
-}
         audio {
             width: 300px; /* Make audio player fit into aesthetic */
         }
@@ -162,7 +162,7 @@
 <body>
     <div id="quoteContainer" class="quote-container">
     <p id="quoteText"></p>
-</div>
+    </div>
     <img src="ressource/rotate.png" class="fade-image" id="fadeImage" alt="Rotating Image">
     <header>
         <img src="ressource/headerwhite.png" alt="L-DuP Photography Logo" onclick="showHome()">
@@ -238,6 +238,7 @@ window.onload = function() {
         showFadeImage(); // Show the fade image on mobile
     }
 };
+
         const folders = {
             folder1: [
                 { 
