@@ -102,14 +102,20 @@
         }
         .center-logo {
     position: absolute; /* Absolute positioning */
-    top: 40%; /* Center vertically */
-    left: 55%; /* Center horizontally */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Adjust position to center */
-    max-width: 400px; /* Set a max width to 500px */
+    max-width: 500px; /* Set a max width to 500px */
     width: 100%; /* Allow it to scale down for smaller screens */
     height: auto; /* Maintain aspect ratio */
     display: none; /* Initially hidden */
     z-index: 1001; /* Ensure it's above other content */
+        }
+
+@media (min-width: 769px) {
+    .center-logo {
+        display: block; /* Show logo on larger screens */
+    }
 }
 
 @media (max-width: 768px) {
@@ -168,7 +174,7 @@
             <a href="#" onclick="showAboutMe()">About Me</a>
         </div>
     </header>
-    <img src="ressource/ldp watermark black.png" alt="L-DuP Watermark" id="logo" class="center-logo" style="display: none;">
+    <img src="ressource/ldp watermark black.png" class="center-logo" alt="L-DuP Photography Logo">
     <div class="container">
         <div class="sidebar" id="sidebar">
             <ul>
