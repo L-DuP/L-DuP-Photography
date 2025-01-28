@@ -190,16 +190,16 @@
     </div>
     <div class="landing-quote" id="landingQuote"></div>
     <script>
-        const quotes = [
-    "Photography is the art of freezing time, capturing moments we didn’t know we’d miss — until we realize we’re just one click away from forgetting everything.",
-    "Photography transforms fleeting moments into eternal stories, reminding us that in a single frame, we can capture the infinite beauty of life’s impermanence.",
-    "Through the lens, we discover that every click is a gateway to countless stories, each image a testament to the magic found in the ordinary.",
-    "Photography is the poetry of light, weaving together moments that dance between reality and imagination, inviting us to see the world through a new lens.",
-    "In a single photograph, we hold the power to transcend time, connecting past and present in a visual embrace that sparks wonder and ignites the imagination."
-];
-
-// Function to determine the quote to display based on the current day
+        // Function to determine the quote to display based on the current day
 function getQuoteOfTheDay() {
+    const quotes = [
+        "Photography is the art of freezing time, capturing moments we didn’t know we’d miss — until we realize we’re just one click away from forgetting everything.",
+        "Photography transforms fleeting moments into eternal stories, reminding us that in a single frame, we can capture the infinite beauty of life’s impermanence.",
+        "Through the lens, we discover that every click is a gateway to countless stories, each image a testament to the magic found in the ordinary.",
+        "Photography is the poetry of light, weaving together moments that dance between reality and imagination, inviting us to see the world through a new lens.",
+        "In a single photograph, we hold the power to transcend time, connecting past and present in a visual embrace that sparks wonder and ignites the imagination."
+    ];
+
     const today = new Date();
     const quoteIndex = today.getDay() % quotes.length; // Cycles through 0–4 for the 5 quotes
     return quotes[quoteIndex];
@@ -208,15 +208,22 @@ function getQuoteOfTheDay() {
 // Display the quote on the landing page
 function displayLandingQuote() {
     const landingQuoteDiv = document.getElementById('landingQuote');
-    const quoteParagraph = document.createElement('p');
-    quoteParagraph.textContent = getQuoteOfTheDay();
-    landingQuoteDiv.appendChild(quoteParagraph);
+    if (landingQuoteDiv) {
+        const quoteParagraph = document.createElement('p');
+        quoteParagraph.textContent = getQuoteOfTheDay();
+        landingQuoteDiv.appendChild(quoteParagraph);
+    }
 }
 
-// Only show the quote on the home/landing page
+// Wait for the DOM to load before running the logic
 window.onload = function() {
+    // Call the function to display the quote
     displayLandingQuote();
-    showHome();
+
+    // Call other page initialization logic (if you have any)
+    if (typeof showHome === 'function') {
+        showHome();
+    }
 };
         const folders = {
             folder1: [
