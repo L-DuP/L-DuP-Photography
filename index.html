@@ -153,12 +153,14 @@
     font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
     font-weight: bold; /* Make the text bold */
     color: black; /* Set text color to black */
-    padding: 20px; /* Optional: add padding for better spacing */
+    padding: 20px; /* Add padding for better spacing */
     box-sizing: border-box; /* Include padding in the element's total width/height */
     overflow: hidden; /* Prevent overflow */
     display: flex; /* Use flex to help with alignment */
     align-items: center; /* Center the content vertically */
     justify-content: center; /* Center the content horizontally */
+    line-height: 1.4; /* Adjust line height for better spacing */
+    text-align: justify; /* Justify the text to fill the space */
 }
     </style>
 </head>
@@ -172,7 +174,9 @@
         </div>
     </header>
     <div class="container">
-        <div class="quote" id="quote">Photography is the poetry of light, weaving together moments that dance between reality and imagination, inviting us to see the world through a new lens.</div>
+        <div class="quote">
+    Photography is the poetry of light, weaving together moments that dance between reality and imagination, inviting us to see the world through a new lens.
+</div>
         <div class="sidebar" id="sidebar">
             <ul>
                 <li><a href="#" onclick="showFolder('folder1')">25.01.2025</a></li>
@@ -245,7 +249,7 @@
     document.getElementById('sidebar').style.display = 'none';
     document.getElementById('gallery').style.display = 'none';
     document.getElementById('aboutMe').style.display = 'none';
-    document.querySelector('.quote').style.display = 'block'; // Show the quote
+    document.querySelector('.quote').style.display = 'block'; // Ensure the quote is shown on home
 }
 
         function showGallery() {
