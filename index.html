@@ -100,29 +100,6 @@
             margin: 15px 0 10px; /* Space between title and description */
             font-weight: bold; /* Bold for the title */
         }
-        .center-logo {
-    position: absolute; /* Absolute positioning */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust position to center */
-    max-width: 500px; /* Set a max width to 500px */
-    width: 100%; /* Allow it to scale down for smaller screens */
-    height: auto; /* Maintain aspect ratio */
-    display: none; /* Initially hidden */
-    z-index: 1001; /* Ensure it's above other content */
-        }
-
-@media (min-width: 769px) {
-    .center-logo {
-        display: block; /* Show logo on larger screens */
-    }
-}
-
-@media (max-width: 768px) {
-    .center-logo {
-        display: none; /* Hide logo on mobile devices */
-    }
-}
         .audio-player {
             margin: 10px 0;
         }
@@ -174,7 +151,6 @@
             <a href="#" onclick="showAboutMe()">About Me</a>
         </div>
     </header>
-    <img src="ressource/ldp watermark black.png" class="center-logo" alt="L-DuP Photography Logo">
     <div class="container">
         <div class="sidebar" id="sidebar">
             <ul>
@@ -245,25 +221,22 @@
         }
 
         function showHome() {
-    document.getElementById('sidebar').style.display = 'none';
-    document.getElementById('gallery').style.display = 'none';
-    document.getElementById('aboutMe').style.display = 'none';
-    document.getElementById('logo').style.display = 'block'; // Show logo on homepage
-    }
+            document.getElementById('sidebar').style.display = 'none';
+            document.getElementById('gallery').style.display = 'none';
+            document.getElementById('aboutMe').style.display = 'none';
+        }
 
-function showGallery() {
-    document.getElementById('sidebar').style.display = 'block';
-    document.getElementById('gallery').style.display = 'block';
-    document.getElementById('aboutMe').style.display = 'none';
-    document.getElementById('logo').style.display = 'none'; // Hide logo in gallery
-    }
+        function showGallery() {
+            document.getElementById('sidebar').style.display = 'block';
+            document.getElementById('gallery').style.display = 'block';
+            document.getElementById('aboutMe').style.display = 'none';
+        }
 
-function showAboutMe() {
-    document.getElementById('sidebar').style.display = 'none';
-    document.getElementById('gallery').style.display = 'none';
-    document.getElementById('aboutMe').style.display = 'block';
-    document.getElementById('logo').style.display = 'none'; // Hide logo in about me
-    }
+        function showAboutMe() {
+            document.getElementById('sidebar').style.display = 'none';
+            document.getElementById('gallery').style.display = 'none';
+            document.getElementById('aboutMe').style.display = 'block';
+        }
 
         function showFolder(folderName) {
     const gallery = document.getElementById('gallery');
@@ -320,29 +293,29 @@ function showAboutMe() {
 
 
         // Function to display the fade-in effect on mobile
-function showFadeImage() {
-    const fadeImage = document.getElementById('fadeImage');
-    fadeImage.style.display = 'block';
-    setTimeout(() => {
-        fadeImage.style.opacity = 1; // Fade in
-    }, 100); // Delay to allow display property to take effect
+        function showFadeImage() {
+            const fadeImage = document.getElementById('fadeImage');
+            fadeImage.style.display = 'block';
+            setTimeout(() => {
+                fadeImage.style.opacity = 1; // Fade in
+            }, 100); // Delay to allow display property to take effect
 
-    setTimeout(() => {
-        fadeImage.style.opacity = 0; // Fade out
-    }, 5100); // Wait for 5 seconds before starting to fade out
+            setTimeout(() => {
+                fadeImage.style.opacity = 0; // Fade out
+            }, 5100); // Wait for 5 seconds before starting to fade out
 
-    setTimeout(() => {
-        fadeImage.style.display = 'none'; // Hide after fade out
-    }, 7100); // Wait for fade out to finish
-}
+            setTimeout(() => {
+                fadeImage.style.display = 'none'; // Hide after fade out
+            }, 7100); // Wait for fade out to finish
+        }
 
-// Show the home page and fade image on load
-window.onload = function() {
-    showHome();
-    if (isMobileDevice()) {
-        showFadeImage(); // Show the fade image on mobile
-    }
-};
+        // Show the home page and fade image on load
+        window.onload = function() {
+            showHome();
+            if (isMobileDevice()) {
+                showFadeImage(); // Show the fade image on mobile
+            }
+        };
     </script>
 </body>
 </html>
