@@ -103,6 +103,23 @@
         .audio-player {
             margin: 10px 0;
         }
+        .quote-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: justify;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    max-width: 600px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: block; /* Show only on the main page */
+}
+
+#quoteText {
+    line-height: 1.5;
+}
         audio {
             width: 300px; /* Make audio player fit into aesthetic */
         }
@@ -143,6 +160,9 @@
     </style>
 </head>
 <body>
+    <div id="quoteContainer" class="quote-container">
+    <p id="quoteText"></p>
+</div>
     <img src="ressource/rotate.png" class="fade-image" id="fadeImage" alt="Rotating Image">
     <header>
         <img src="ressource/headerwhite.png" alt="L-DuP Photography Logo" onclick="showHome()">
@@ -166,6 +186,58 @@
         </div>
     </div>
     <script>
+        const quotes = [
+    "Photography is the art of freezing time, capturing moments we didn’t know we’d miss — until we realize we’re just one click away from forgetting everything.",
+    "Photography transforms fleeting moments into eternal stories, reminding us that in a single frame, we can capture the infinite beauty of life’s impermanence.",
+    "Through the lens, we discover that every click is a gateway to countless stories, each image a testament to the magic found in the ordinary.",
+    "Photography is the poetry of light, weaving together moments that dance between reality and imagination, inviting us to see the world through a new lens.",
+    "In a single photograph, we hold the power to transcend time, connecting past and present in a visual embrace that sparks wonder and ignites the imagination."
+];
+
+// Function to select the quote based on the date
+function getQuoteOfTheDay() {
+    const currentDate = new Date();
+    const dayIndex = currentDate.getDate() % quotes.length;
+    return quotes[dayIndex];
+}
+
+// Function to display the quote on the main page
+function displayQuote() {
+    const quoteText = document.getElementById('quoteText');
+    quoteText.textContent = getQuoteOfTheDay();
+}
+
+// Ensure the quote container only shows on the home page
+function showHome() {
+    document.getElementById('quoteContainer').style.display = 'block'; // Show the quote
+    document.getElementById('sidebar').style.display = 'none';
+    document.getElementById('gallery').style.display = 'none';
+    document.getElementById('aboutMe').style.display = 'none';
+}
+
+// Hide the quote container for other sections
+function showGallery() {
+    document.getElementById('quoteContainer').style.display = 'none'; // Hide the quote
+    document.getElementById('sidebar').style.display = 'block';
+    document.getElementById('gallery').style.display = 'block';
+    document.getElementById('aboutMe').style.display = 'none';
+}
+
+function showAboutMe() {
+    document.getElementById('quoteContainer').style.display = 'none'; // Hide the quote
+    document.getElementById('sidebar').style.display = 'none';
+    document.getElementById('gallery').style.display = 'none';
+    document.getElementById('aboutMe').style.display = 'block';
+}
+
+// Initialize the quote on load
+window.onload = function() {
+    displayQuote(); // Display the quote of the day
+    showHome();
+    if (isMobileDevice()) {
+        showFadeImage(); // Show the fade image on mobile
+    }
+};
         const folders = {
             folder1: [
                 { 
