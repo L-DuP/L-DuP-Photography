@@ -145,12 +145,16 @@
     top: 50%; /* Move down to the middle of the container */
     left: 50%; /* Move to the center from the left */
     transform: translate(-50%, -50%); /* Center the element */
-    width: 70%; /* Cover 70% of the screen */
+    width: 70vw; /* Set width to 70% of the viewport width */
+    height: 70vw; /* Set height to 70% of the viewport width to form a square */
     max-width: 800px; /* Optional: set a max width for larger screens */
-    text-align: center; /* Center the text */
+    max-height: 800px; /* Optional: set a max height for larger screens */
+    text-align: justify; /* Justify the text */
     font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
     font-weight: bold; /* Make the text bold */
     color: black; /* Set text color to black */
+    padding: 20px; /* Optional: add padding for better spacing */
+    box-sizing: border-box; /* Include padding in the element's total width/height */
 }
     </style>
 </head>
