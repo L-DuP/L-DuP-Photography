@@ -140,26 +140,23 @@
                 text-align: center;
             }
         }
-        .poetry-text {
-    position: absolute; /* Allows the text to be positioned relative to its parent */
-    top: 50%; /* Vertically center the text */
-    left: 50%; /* Horizontally center the text */
-    transform: translate(-50%, -50%); /* Adjust position to be perfectly centered */
-    max-width: 70vw; /* Maximum width of the text (70% of the viewport width) */
-    text-align: justify; /* Justify the text */
-    color: black; /* Text color */
-    font-weight: bold; /* Make the text bold */
+        .quote {
+    position: absolute; /* Position it absolutely within the container */
+    top: 50%; /* Move down to the middle of the container */
+    left: 50%; /* Move to the center from the left */
+    transform: translate(-50%, -50%); /* Center the element */
+    width: 70%; /* Cover 70% of the screen */
+    max-width: 800px; /* Optional: set a max width for larger screens */
+    text-align: center; /* Center the text */
     font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
-    z-index: 1001; /* Ensure it's above the fade image and other elements */
+    font-weight: bold; /* Make the text bold */
+    color: black; /* Set text color to black */
 }
     </style>
 </head>
 <body>
     <img src="ressource/rotate.png" class="fade-image" id="fadeImage" alt="Rotating Image">
     <header>
-        <div class="poetry-text">
-    Photography is the poetry of light, weaving together moments that dance between reality and imagination, inviting us to see the world through a new lens.
-    </div>
         <img src="ressource/headerwhite.png" alt="L-DuP Photography Logo" onclick="showHome()">
         <div class="navigation">
             <a href="#" onclick="showGallery()">Gallery</a>
@@ -167,6 +164,7 @@
         </div>
     </header>
     <div class="container">
+        <div class="quote" id="quote">Photography is the poetry of light, weaving together moments that dance between reality and imagination, inviting us to see the world through a new lens.</div>
         <div class="sidebar" id="sidebar">
             <ul>
                 <li><a href="#" onclick="showFolder('folder1')">25.01.2025</a></li>
