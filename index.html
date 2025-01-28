@@ -320,29 +320,29 @@ function showAboutMe() {
 
 
         // Function to display the fade-in effect on mobile
-        function showFadeImage() {
-            const fadeImage = document.getElementById('fadeImage');
-            fadeImage.style.display = 'block';
-            setTimeout(() => {
-                fadeImage.style.opacity = 1; // Fade in
-            }, 100); // Delay to allow display property to take effect
+function showFadeImage() {
+    const fadeImage = document.getElementById('fadeImage');
+    fadeImage.style.display = 'block';
+    setTimeout(() => {
+        fadeImage.style.opacity = 1; // Fade in
+    }, 100); // Delay to allow display property to take effect
 
-            setTimeout(() => {
-                fadeImage.style.opacity = 0; // Fade out
-            }, 5100); // Wait for 5 seconds before starting to fade out
+    setTimeout(() => {
+        fadeImage.style.opacity = 0; // Fade out
+    }, 5100); // Wait for 5 seconds before starting to fade out
 
-            setTimeout(() => {
-                fadeImage.style.display = 'none'; // Hide after fade out
-            }, 7100); // Wait for fade out to finish
-        }
+    setTimeout(() => {
+        fadeImage.style.display = 'none'; // Hide after fade out
+    }, 7100); // Wait for fade out to finish
+}
 
-        // Show the home page and fade image on load
-        window.onload = function() {
-            showHome();
-            if (isMobileDevice()) {
-                showFadeImage(); // Show the fade image on mobile
-            }
-        };
+// Show the home page and fade image on load
+window.onload = function() {
+    showHome();
+    if (isMobileDevice()) {
+        showFadeImage(); // Show the fade image on mobile
+    }
+};
     </script>
 </body>
 </html>
