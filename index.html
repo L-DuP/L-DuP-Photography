@@ -101,15 +101,16 @@
             font-weight: bold; /* Bold for the title */
         }
         .center-logo {
-    position: absolute;
-    top: 40%;
-    left: 55%;
-    transform: translate(-50%, -50%);
-    max-width: 400px;
-    height: auto;
+    position: absolute; /* Absolute positioning */
+    top: 40%; /* Center vertically */
+    left: 55%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust position to center */
+    max-width: 400px; /* Set a max width to 500px */
+    width: 100%; /* Allow it to scale down for smaller screens */
+    height: auto; /* Maintain aspect ratio */
     display: none; /* Initially hidden */
-    z-index: 1001; /* Ensure it is above other content */
-        }
+    z-index: 1001; /* Ensure it's above other content */
+}
 
 @media (max-width: 768px) {
     .center-logo {
