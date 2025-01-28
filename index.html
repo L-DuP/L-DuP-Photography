@@ -117,6 +117,25 @@
     object-fit: contain;
     cursor: url('ressource/cursor.cur'), pointer; /* Custom cursor for images */
         }
+        .landing-text {
+    display: flex;
+    justify-content: center;  /* Center horizontally */
+    align-items: center;      /* Center vertically */
+    text-align: justify;      /* Justify the text */
+    color: black;             /* Set text color to black */
+    font-weight: bold;        /* Make text bold */
+    font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
+    position: absolute;       /* Position it relative to the container */
+    top: 15%;                 /* Adjust top position */
+    left: 50%;                /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center vertically */
+    width: 70vw;              /* Set width to 70% of viewport width */
+    height: 70vh;             /* Set height to 70% of viewport height */
+    box-sizing: border-box;   /* Include padding and border in element's total width and height */
+    padding: 20px;            /* Add some padding */
+    background-color: white;  /* White background */
+    z-index: 1;               /* Ensure it's above the sidebar */
+}
         .fade-image {
             position: fixed;
             top: calc(50% + 150px);
@@ -151,6 +170,9 @@
             <a href="#" onclick="showAboutMe()">About Me</a>
         </div>
     </header>
+    <div class="landing-text" id="landingText">
+    Photography is the poetry of light, weaving together moments that dance between reality and imagination, inviting us to see the world through a new lens.
+</div>
     <div class="container">
         <div class="sidebar" id="sidebar">
             <ul>
@@ -220,22 +242,23 @@
             return window.innerWidth <= 768; // Detect mobile devices
         }
 
-        function showHome() {
-            document.getElementById('sidebar').style.display = 'none';
-            document.getElementById('gallery').style.display = 'none';
-            document.getElementById('aboutMe').style.display = 'none';
+       function showHome() {
+    document.getElementById('sidebar').style.display = 'none';
+    document.getElementById('gallery').style.display = 'none';
+    document.getElementById('aboutMe').style.display = 'none';
+    document.getElementById('landingText').style.display = 'flex'; // Show landing text
         }
-
         function showGallery() {
-            document.getElementById('sidebar').style.display = 'block';
-            document.getElementById('gallery').style.display = 'block';
-            document.getElementById('aboutMe').style.display = 'none';
+    document.getElementById('sidebar').style.display = 'block';
+    document.getElementById('gallery').style.display = 'block';
+    document.getElementById('aboutMe').style.display = 'none';
+    document.getElementById('landingText').style.display = 'none'; // Hide landing text
         }
-
         function showAboutMe() {
-            document.getElementById('sidebar').style.display = 'none';
-            document.getElementById('gallery').style.display = 'none';
-            document.getElementById('aboutMe').style.display = 'block';
+    document.getElementById('sidebar').style.display = 'none';
+    document.getElementById('gallery').style.display = 'none';
+    document.getElementById('aboutMe').style.display = 'block';
+    document.getElementById('landingText').style.display = 'none'; // Hide landing text
         }
 
         function showFolder(folderName) {
