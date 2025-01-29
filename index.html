@@ -420,15 +420,13 @@ Es werden regelmäßig neue Sets hinzugefügt, also folgen Sie mir auf dieser sp
 
         function checkOrientation() {
     const portraitOverlay = document.getElementById('portraitOverlay');
-    const sidebar = document.querySelector('.sidebar'); // Adjust selector if needed
+    const sidebar = document.querySelector('.sidebar'); // Ensure this selector matches your sidebar
 
     if (window.innerHeight > window.innerWidth) {
         // If in portrait mode, show alert and then display images
-        if (!portraitOverlay.style.display || portraitOverlay.style.display === 'none') {
-            alert("Please rotate your device to landscape mode for the best experience.");
-            portraitOverlay.style.display = 'block'; // Show overlay with images
-            sidebar.classList.add('hide-sidebar'); // Hide the sidebar
-        }
+        alert("Please rotate your device to landscape mode for the best experience.");
+        portraitOverlay.style.display = 'block'; // Show overlay with images
+        sidebar.classList.add('hide-sidebar'); // Hide the sidebar
     } else {
         // If in landscape mode, hide the images and show the sidebar
         portraitOverlay.style.display = 'none'; // Hide overlay with images
