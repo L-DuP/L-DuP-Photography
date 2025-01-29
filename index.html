@@ -61,6 +61,13 @@
             list-style: none;
             padding: 0;
         }
+        .portrait-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+        }
         .sidebar li {
             margin: 10px 0;
         }
@@ -223,6 +230,10 @@
             <a href="#" onclick="showAboutMe()">About Me</a>
         </div>
     </header>
+    <div id="portraitOverlay" class="portrait-message" style="display: none;">
+    <img src="ressource/ldp watermark black.png" alt="Logo" id="logo" />
+    <img src="ressource/rotate.png" alt="Rotate Image" id="rotateImage" />
+    </div>
     <div class="landing-text" id="landingText">
     <p>
         Photography is the poetry <br>
@@ -399,19 +410,22 @@ Es werden regelmäßig neue Sets hinzugefügt, also folgen Sie mir auf dieser sp
 }
 
         function checkOrientation() {
-        if (window.innerHeight > window.innerWidth) {
-            // If in portrait mode, hide the main content and show the message
-            document.body.classList.add('hide-portrait');
-            alert("Please rotate your device to landscape mode for the best experience.");
-        } else {
-            // If in landscape mode, ensure content is visible
-            document.body.classList.remove('hide-portrait');
-        }
+    const portraitOverlay = document.getElementById('portraitOverlay');
+    if (window.innerHeight > window.innerWidth) {
+        // If in portrait mode, show the images
+        document.body.classList.add('hide-portrait');
+        portraitOverlay.style.display = 'block'; // Show overlay with images
+        alert("Please rotate your device to landscape mode for the best experience.");
+    } else {
+        // If in landscape mode, ensure content is visible
+        document.body.classList.remove('hide-portrait');
+        portraitOverlay.style.display = 'none'; // Hide overlay with images
     }
+}
 
-    // Check orientation on load and on resize
-    window.addEventListener("load", checkOrientation);
-    window.addEventListener("resize", checkOrientation);
+// Check orientation on load and on resize
+window.addEventListener("load", checkOrientation);
+window.addEventListener("resize", checkOrientation);
 
         // Function to display the fade-in effect on mobile
         function showFadeImage() {
