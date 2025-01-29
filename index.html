@@ -94,6 +94,8 @@
             height: 70vh;              /* Set height to 70% of viewport height */
             padding: 20px;             /* Add some padding */
             z-index: 1;                /* Ensure it's above the sidebar */
+            background-color: white; /* Ensure the background is white */
+            box-sizing: border-box; /* Include padding and border in the width */
         }
         .gallery img {
             width: auto;
@@ -169,7 +171,7 @@
         overflow-y: auto; /* Allows scrolling */
         font-size: 1.1em; /* Optionally adjust the font size for better readability */
         padding: 30px; /* Optionally add some padding */
-        max-width: 80vw;
+        width: 100%;
         margin: 0 auto;
     }
 }
