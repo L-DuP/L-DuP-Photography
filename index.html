@@ -190,18 +190,6 @@
         text-align: center;        /* Center text alignment */
     }
 }
-        .fade-image {
-            position: fixed;
-            top: 50%;
-            left: 79%;
-            transform: translate(-50%, -50%);
-            width: 70%;
-            height: auto;
-            display: none;
-            opacity: 0;
-            transition: opacity 2s ease-in-out;
-            z-index: 1002; /* Ensure it's above the header */
-        }
         @media (max-width: 768px) {
             header {
                 display: flex; /* Show header on mobile */
@@ -216,7 +204,6 @@
     </style>
 </head>
 <body>
-    <img src="ressource/rotate.png" class="fade-image" id="fadeImage" alt="Rotating Image">
     <header>
         <img src="ressource/headerwhite.png" alt="L-DuP Photography Logo" onclick="showHome()">
         <div class="navigation">
@@ -414,30 +401,6 @@ Es werden regelmäßig neue Sets hinzugefügt, also folgen Sie mir auf dieser sp
     window.addEventListener("load", checkOrientation);
     window.addEventListener("resize", checkOrientation);
 
-        // Function to display the fade-in effect on mobile
-        function showFadeImage() {
-            const fadeImage = document.getElementById('fadeImage');
-            fadeImage.style.display = 'block';
-            setTimeout(() => {
-                fadeImage.style.opacity = 1; // Fade in
-            }, 100); // Delay to allow display property to take effect
-
-            setTimeout(() => {
-                fadeImage.style.opacity = 0; // Fade out
-            }, 5100); // Wait for 5 seconds before starting to fade out
-
-            setTimeout(() => {
-                fadeImage.style.display = 'none'; // Hide after fade out
-            }, 7100); // Wait for fade out to finish
-        }
-
-        // Show the home page and fade image on load
-        window.onload = function() {
-            showHome();
-            if (isMobileDevice()) {
-                showFadeImage(); // Show the fade image on mobile
-            }
-        };
         function handleOrientationChange() {
     const landingText = document.getElementById('landingText');
     
@@ -455,38 +418,9 @@ Es werden regelmäßig neue Sets hinzugefügt, also folgen Sie mir auf dieser sp
 // Listen for orientation changes
 window.addEventListener("orientationchange", handleOrientationChange);
 window.addEventListener("resize", handleOrientationChange);
-
-// Run once on page load
-window.onload = function() {
-    showHome();
-    handleOrientationChange(); // Maintain landing text behavior
-    if (isMobileDevice()) {
-        showFadeImage();
-        const fadeImage = document.getElementById('fadeImage');
-        fadeImage.style.opacity = '0'; // Start hidden
-        fadeImage.style.transition = 'opacity 1.5s ease-in-out'; // Smooth fade-in effect
-        setTimeout(() => {
-            fadeImage.style.opacity = '1'; // Fade in smoothly
-        }, 100);
-    }
 };
 
-// Listen for orientation changes
-window.addEventListener("orientationchange", handleFadeImage);
-window.addEventListener("resize", handleFadeImage);
-function handleFadeImage() {
-    const fadeImage = document.getElementById('fadeImage');
 
-    if (isMobileDevice()) {
-        if (window.matchMedia("(orientation: landscape)").matches) {
-            fadeImage.style.opacity = '0'; // Instantly hide on rotation
-            fadeImage.style.transition = 'none'; // Remove fade effect for instant removal
-        } else {
-            fadeImage.style.opacity = '1'; // Stay visible in portrait
-        }
-    } else {
-        fadeImage.style.opacity = '1'; // Always visible on desktop
-    }
 }
     </script>
 </body>
