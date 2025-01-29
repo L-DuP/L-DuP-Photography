@@ -411,14 +411,15 @@ Es werden regelmäßig neue Sets hinzugefügt, also folgen Sie mir auf dieser sp
 
         function checkOrientation() {
     const portraitOverlay = document.getElementById('portraitOverlay');
+
     if (window.innerHeight > window.innerWidth) {
-        // If in portrait mode, show the images
-        document.body.classList.add('hide-portrait');
-        portraitOverlay.style.display = 'block'; // Show overlay with images
-        alert("Please rotate your device to landscape mode for the best experience.");
+        // If in portrait mode, show alert and then display images
+        if (!portraitOverlay.style.display || portraitOverlay.style.display === 'none') {
+            alert("Please rotate your device to landscape mode for the best experience.");
+            portraitOverlay.style.display = 'block'; // Show overlay with images
+        }
     } else {
-        // If in landscape mode, ensure content is visible
-        document.body.classList.remove('hide-portrait');
+        // If in landscape mode, hide the images
         portraitOverlay.style.display = 'none'; // Hide overlay with images
     }
 }
