@@ -97,6 +97,9 @@
             background-color: white; /* Ensure the background is white */
             box-sizing: border-box; /* Include padding and border in the width */
         }
+        .hide-portrait {
+    display: none;
+}
         .gallery img {
             width: auto;
             max-height: 90vh;
@@ -187,18 +190,6 @@
         text-align: center;        /* Center text alignment */
     }
 }
-        .fade-image {
-            position: fixed;
-            top: 50%;
-            left: 79%;
-            transform: translate(-50%, -50%);
-            width: 70%;
-            height: auto;
-            display: none;
-            opacity: 0;
-            transition: opacity 2s ease-in-out;
-            z-index: 1002; /* Ensure it's above the header */
-        }
         @media (max-width: 768px) {
             header {
                 display: flex; /* Show header on mobile */
@@ -395,32 +386,20 @@ Es werden regelmäßig neue Sets hinzugefügt, also folgen Sie mir auf dieser sp
         }
     }
 }
-
-
-        // Function to display the fade-in effect on mobile
-        function showFadeImage() {
-            const fadeImage = document.getElementById('fadeImage');
-            fadeImage.style.display = 'block';
-            setTimeout(() => {
-                fadeImage.style.opacity = 1; // Fade in
-            }, 100); // Delay to allow display property to take effect
-
-            setTimeout(() => {
-                fadeImage.style.opacity = 0; // Fade out
-            }, 5100); // Wait for 5 seconds before starting to fade out
-
-            setTimeout(() => {
-                fadeImage.style.display = 'none'; // Hide after fade out
-            }, 7100); // Wait for fade out to finish
+         function checkOrientation() {
+        if (window.innerHeight > window.innerWidth) {
+            // If in portrait mode, hide the main content and show the message
+            document.body.classList.add('hide-portrait');
+            alert("Please rotate your device to landscape mode for the best experience.");
+        } else {
+            // If in landscape mode, ensure content is visible
+            document.body.classList.remove('hide-portrait');
         }
+    }
 
-        // Show the home page and fade image on load
-        window.onload = function() {
-            showHome();
-            if (isMobileDevice()) {
-                showFadeImage(); // Show the fade image on mobile
-            }
-        };
+    // Check orientation on load and on resize
+    window.addEventListener("load", checkOrientation);
+    window.addEventListener("resize", checkOrientation);
         function handleOrientationChange() {
     const landingText = document.getElementById('landingText');
     
