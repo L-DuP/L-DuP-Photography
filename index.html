@@ -375,6 +375,32 @@
                 showFadeImage(); // Show the fade image on mobile
             }
         };
+        function handleOrientationChange() {
+    const landingText = document.getElementById('landingText');
+    
+    if (isMobileDevice()) {
+        if (window.matchMedia("(orientation: portrait)").matches) {
+            landingText.style.display = 'none'; // Hide in portrait mode
+        } else {
+            landingText.style.display = 'flex'; // Show in landscape mode
+        }
+    } else {
+        landingText.style.display = 'flex'; // Always show on desktop
+    }
+}
+
+// Listen for orientation changes
+window.addEventListener("orientationchange", handleOrientationChange);
+window.addEventListener("resize", handleOrientationChange);
+
+// Run once on page load
+window.onload = function() {
+    showHome();
+    handleOrientationChange(); // Apply the correct initial state
+    if (isMobileDevice()) {
+        showFadeImage();
+    }
+};
     </script>
 </body>
 </html>
