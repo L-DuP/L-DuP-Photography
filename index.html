@@ -401,6 +401,34 @@ window.onload = function() {
         showFadeImage();
     }
 };
+function handleFadeImage() {
+    const fadeImage = document.getElementById('fadeImage');
+
+    if (isMobileDevice()) {
+        if (window.matchMedia("(orientation: landscape)").matches) {
+            fadeImage.style.opacity = '0'; // Fade out when rotated
+            fadeImage.style.transition = 'opacity 1s ease-in-out';
+        } else {
+            fadeImage.style.opacity = '1'; // Stay visible in portrait
+        }
+    } else {
+        fadeImage.style.opacity = '1'; // Always visible on desktop
+    }
+}
+
+// Listen for orientation changes
+window.addEventListener("orientationchange", handleFadeImage);
+window.addEventListener("resize", handleFadeImage);
+
+// Run once on page load
+window.onload = function() {
+    showHome();
+    handleOrientationChange(); // Maintain landing text behavior
+    if (isMobileDevice()) {
+        showFadeImage();
+        handleFadeImage(); // Apply fade image logic
+    }
+};
     </script>
 </body>
 </html>
