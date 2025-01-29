@@ -406,10 +406,11 @@ function handleFadeImage() {
 
     if (isMobileDevice()) {
         if (window.matchMedia("(orientation: landscape)").matches) {
-            fadeImage.style.opacity = '0'; // Fade out when rotated
-            fadeImage.style.transition = 'opacity 1s ease-in-out';
+            fadeImage.style.opacity = '0'; // Instantly hide image on rotation
+            fadeImage.style.transition = 'none'; // Remove fade effect
         } else {
             fadeImage.style.opacity = '1'; // Stay visible in portrait
+            fadeImage.style.transition = 'opacity 1s ease-in-out'; // Fade in smoothly
         }
     } else {
         fadeImage.style.opacity = '1'; // Always visible on desktop
@@ -426,6 +427,12 @@ window.onload = function() {
     handleOrientationChange(); // Maintain landing text behavior
     if (isMobileDevice()) {
         showFadeImage();
+        const fadeImage = document.getElementById('fadeImage');
+        fadeImage.style.opacity = '0'; // Start hidden
+        fadeImage.style.transition = 'opacity 1s ease-in-out';
+        setTimeout(() => {
+            fadeImage.style.opacity = '1'; // Fade in smoothly
+        }, 100);
         handleFadeImage(); // Apply fade image logic
     }
 };
