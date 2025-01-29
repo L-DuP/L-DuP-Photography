@@ -98,13 +98,6 @@
             z-index: 1;                /* Ensure it's above the sidebar */
             overflow: hidden;          /* Hide any overflow */
         }
-        @media screen and (max-width: 768px) {
-    #about-me {
-        max-height: 100vh; /* Limits height to the viewport */
-        overflow-y: auto;  /* Enables vertical scrolling */
-        padding-bottom: 20px; /* Adds space for readability */
-    }
-}
         .gallery img {
             width: auto;
             max-height: 90vh;
@@ -183,6 +176,11 @@
         left: 70%;                 /* Center horizontally */
         transform: translate(-50%, -50%); /* Center both vertically and horizontally */
         text-align: center;        /* Center text alignment */
+    }
+             #about-me {
+        max-height: 100vh; /* Limits height to the viewport */
+        overflow-y: auto;  /* Enables vertical scrolling */
+        padding-bottom: 20px; /* Adds space for readability */
     }
 }
         .fade-image {
