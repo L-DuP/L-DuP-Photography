@@ -289,6 +289,9 @@
             <a href="#" onclick="showGallery()">Gallery</a>
             <a href="#" onclick="showAboutMe()">About Me</a>
             <a href="#" onclick="showContact()">Contact & Socials</a>
+            <div id="visit-counter" style="margin-bottom: 5px; color: white; font-size: 12px;">
+    👁: <span id="counter">0</span>
+        </div>
             <p class="copyright-text">© 2025 Lars Weigmann</p>
         </div>
     </header>
@@ -591,6 +594,21 @@ function handleFadeImage() {
         fadeImage.style.opacity = '1'; // Always visible on desktop
     }
 }
+        let visitCount = localStorage.getItem('visitCount');
+
+// If not found, initialize it to 0
+if (!visitCount) {
+    visitCount = 0;
+}
+
+// Increment visit count
+visitCount++;
+
+// Update local storage
+localStorage.setItem('visitCount', visitCount);
+
+// Display visit count in the counter element
+document.getElementById('counter').textContent = visitCount;
     </script>
 </body>
 </html>
