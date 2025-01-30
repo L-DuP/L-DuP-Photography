@@ -113,6 +113,24 @@
             background-color: white; /* Ensure the background is white */
             box-sizing: border-box; /* Include padding and border in the width */
         }
+        .Contact {
+            flex-direction: column;   /* Stack the text in a column */
+            justify-content: center;   /* Center content vertically */
+            align-items: center;       /* Center content horizontally */
+            color: black;              /* Set text color to black */
+            font-weight: bold;         /* Make text bold */
+            font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
+            position: absolute;        /* Position it relative to the container */
+            top: 50%;                  /* Center vertically */
+            left: 55%;                 /* Center horizontally */
+            transform: translate(-50%, -50%); /* Center both vertically and horizontally */
+            width: 70vh;               /* Set width to 70% of viewport height (maintains square shape) */
+            height: 70vh;              /* Set height to 70% of viewport height */
+            padding: 20px;             /* Add some padding */
+            z-index: 1;                /* Ensure it's above the sidebar */
+            background-color: white; /* Ensure the background is white */
+            box-sizing: border-box; /* Include padding and border in the width */
+        }
         .hide-portrait {
             display: none;
         }
@@ -294,6 +312,9 @@ Es werden regelmäßig neue Sets hinzugefügt, also folgen Sie mir auf dieser sp
     </div>
     <div class="Contact" id="Contact">
             <p>SOCIALS HERE</p>
+             <a href="https://www.instagram.com/yourprofile" target="_blank">Instagram</a><br>
+             <a href="https://bsky.app/yourprofile" target="_blank">BlueSky</a><br>
+            <a href="https://www.threads.net/@yourprofile" target="_blank">Threads</a>
         </div>
     <script>
         const folders = {
@@ -374,7 +395,7 @@ Es werden regelmäßig neue Sets hinzugefügt, also folgen Sie mir auf dieser sp
         function showContact() {
     document.getElementById('sidebar').style.display = 'none';
     document.getElementById('gallery').style.display = 'none';
-    document.getElementById('aboutMe').style.display = 'block';
+    document.getElementById('aboutMe').style.display = 'none';
     document.getElementById('Contact').style.display = 'block';        
     document.getElementById('landingText').style.display = 'none'; // Hide landing text
         }
