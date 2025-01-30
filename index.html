@@ -241,6 +241,7 @@
         <div class="navigation">
             <a href="#" onclick="showGallery()">Gallery</a>
             <a href="#" onclick="showAboutMe()">About Me</a>
+            <a href="#" onclick="showContact()">About Me</a>
         </div>
     </header>
     <div class="landing-text" id="landingText">
@@ -289,6 +290,10 @@ Mit dieser Website möchte ich die verschiedenen Stimmungen und Momente teilen, 
 Um diese Momente noch eindringlicher zu machen, füge ich kurze Tonaufnahmen von den Orten hinzu, an denen ich meine Bilder mache. Diese Kombination aus Bildern und Umgebungsgeräuschen ermöglicht eine tiefere Verbindung zu den aufgenommenen Szenen. <br>
 <br>
 Es werden regelmäßig neue Sets hinzugefügt, also folgen Sie mir auf dieser spannenden Reise des visuellen Geschichtenerzählens!</p>
+        </div>
+        <div class="Contact" id="Contact">
+            <img src="ressource/aboutme.jpg" alt="Your Photo" style="max-height: 200px; width: auto; left: 55%; ">
+            <p>SOCIALS HERE</p>
         </div>
     </div>
     <script>
@@ -350,18 +355,28 @@ Es werden regelmäßig neue Sets hinzugefügt, also folgen Sie mir auf dieser sp
     document.getElementById('sidebar').style.display = 'none';
     document.getElementById('gallery').style.display = 'none';
     document.getElementById('aboutMe').style.display = 'none';
+    document.getElementById('Contact').style.display = 'none';
     document.getElementById('landingText').style.display = 'flex'; // Show landing text
         }
         function showGallery() {
     document.getElementById('sidebar').style.display = 'block';
     document.getElementById('gallery').style.display = 'block';
     document.getElementById('aboutMe').style.display = 'none';
+    document.getElementById('Contact').style.display = 'none';        
     document.getElementById('landingText').style.display = 'none'; // Hide landing text
         }
         function showAboutMe() {
     document.getElementById('sidebar').style.display = 'none';
     document.getElementById('gallery').style.display = 'none';
     document.getElementById('aboutMe').style.display = 'block';
+    document.getElementById('Contact').style.display = 'block';        
+    document.getElementById('landingText').style.display = 'none'; // Hide landing text
+        }
+        function showContact() {
+    document.getElementById('sidebar').style.display = 'none';
+    document.getElementById('gallery').style.display = 'none';
+    document.getElementById('aboutMe').style.display = 'block';
+    document.getElementById('Contact').style.display = 'block';        
     document.getElementById('landingText').style.display = 'none'; // Hide landing text
         }
 
