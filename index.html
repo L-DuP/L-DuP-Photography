@@ -290,6 +290,13 @@ Um diese Momente noch eindringlicher zu machen, füge ich kurze Tonaufnahmen von
 <br>
 Es werden regelmäßig neue Sets hinzugefügt, also folgen Sie mir auf dieser spannenden Reise des visuellen Geschichtenerzählens!</p>
         </div>
+        <div id="contactSocials" class="content" style="display:none;">
+    <h1>Contact & Socials</h1>
+    <ul>
+        <li><a href="https://instagram.com/yourprofile" target="_blank">Instagram</a></li>
+        <li><a href="https://bsky.app/yourprofile" target="_blank">BlueSky</a></li>
+        <li><a href="https://threads.net/yourprofile" target="_blank">Threads</a></li>
+    </ul>
     </div>
     <script>
         const folders = {
@@ -364,6 +371,15 @@ Es werden regelmäßig neue Sets hinzugefügt, also folgen Sie mir auf dieser sp
     document.getElementById('aboutMe').style.display = 'block';
     document.getElementById('landingText').style.display = 'none'; // Hide landing text
         }
+        document.getElementById("aboutMeBtn").addEventListener("click", function() {
+    document.getElementById("aboutMe").style.display = "block";
+    document.getElementById("contactSocials").style.display = "none";
+});
+
+document.getElementById("contactSocialsBtn").addEventListener("click", function() {
+    document.getElementById("aboutMe").style.display = "none";
+    document.getElementById("contactSocials").style.display = "block";
+});
 
         function showFolder(folderName) {
     const gallery = document.getElementById('gallery');
