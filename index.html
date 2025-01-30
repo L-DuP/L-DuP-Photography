@@ -62,21 +62,21 @@
             padding: 0;
         }
         .portrait-message {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
 
-        .portrait-message img {
-            max-width: 80%; /* Adjust size as needed */
-            height: auto; /* Maintain aspect ratio */
-        }
+.portrait-message img {
+    max-width: 80%; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+}
 
-        .hide-sidebar {
-            display: none; /* Hide the sidebar */
-        }
+.hide-sidebar {
+    display: none; /* Hide the sidebar */
+}
         .sidebar li {
             margin: 10px 0;
         }
@@ -139,73 +139,73 @@
             width: 300px; /* Make audio player fit into aesthetic */
         }
         a img {
-            cursor: url('ressource/cursor.cur'), pointer;
+        cursor: url('ressource/cursor.cur'), pointer;
         }
         .gallery img {
-            width: auto;
-            max-height: 90vh;
-            display: block;
-            margin: 0 auto;
-            object-fit: contain;
-            cursor: url('ressource/cursor.cur'), pointer; /* Custom cursor for images */
+    width: auto;
+    max-height: 90vh;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+    cursor: url('ressource/cursor.cur'), pointer; /* Custom cursor for images */
         }
         .landing-text {
-            display: flex;
-            flex-direction: column;   /* Stack the text in a column */
-            justify-content: center;   /* Center content vertically */
-            align-items: center;       /* Center content horizontally */
-            color: black;              /* Set text color to black */
-            font-weight: bold;         /* Make text bold */
-            font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
-            position: absolute;        /* Position it relative to the container */
-            top: 50%;                  /* Center vertically */
-            left: 55%;                 /* Center horizontally */
-            transform: translate(-50%, -50%); /* Center both vertically and horizontally */
-            width: 70vh;               /* Set width to 70% of viewport height (maintains square shape) */
-            height: 70vh;              /* Set height to 70% of viewport height */
-            box-sizing: border-box;    /* Include padding and border in element's total width and height */
-            padding: 20px;             /* Add some padding */
-            background-color: white;   /* White background */
-            z-index: 1;                /* Ensure it's above the sidebar */
-            overflow: hidden;          /* Hide any overflow */
-        }
+    display: flex;
+    flex-direction: column;   /* Stack the text in a column */
+    justify-content: center;   /* Center content vertically */
+    align-items: center;       /* Center content horizontally */
+    color: black;              /* Set text color to black */
+    font-weight: bold;         /* Make text bold */
+    font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
+    position: absolute;        /* Position it relative to the container */
+    top: 50%;                  /* Center vertically */
+    left: 55%;                 /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center both vertically and horizontally */
+    width: 70vh;               /* Set width to 70% of viewport height (maintains square shape) */
+    height: 70vh;              /* Set height to 70% of viewport height */
+    box-sizing: border-box;    /* Include padding and border in element's total width and height */
+    padding: 20px;             /* Add some padding */
+    background-color: white;   /* White background */
+    z-index: 1;                /* Ensure it's above the sidebar */
+    overflow: hidden;          /* Hide any overflow */
+}
 
-        .landing-text p {
-            margin: 0;                 /* Remove default margins */
-            line-height: 1.4;          /* Adjust line height for better spacing */
-            text-align: left;          /* Align text to the left for better control */
-            font-size: 1.5rem;         /* Increase the font size (adjust as needed) */
-        }
+.landing-text p {
+    margin: 0;                 /* Remove default margins */
+    line-height: 1.4;          /* Adjust line height for better spacing */
+    text-align: left;          /* Align text to the left for better control */
+    font-size: 1.5rem;           /* Increase the font size (adjust as needed) */
+}
 
-        /* Optional: Adjust spacing for a more square-like appearance */
-        .landing-text::after {
-            content: "";               /* Create a pseudo-element */
-            display: inline-block;     /* Allow it to take space */
-            width: 100%;               /* Full width */
-            height: 1em;               /* 1 line height */
-        }
+/* Optional: Adjust spacing for a more square-like appearance */
+.landing-text::after {
+    content: "";               /* Create a pseudo-element */
+    display: inline-block;     /* Allow it to take space */
+    width: 100%;               /* Full width */
+    height: 1em;               /* 1 line height */
+}
         @media only screen and (max-width: 768px) and (orientation: landscape) {
-            .about-me {
-                white-space: normal; /* Ensures text wraps properly */
-                overflow-y: auto; /* Allows scrolling */
-                font-size: 1.1em; /* Optionally adjust the font size for better readability */
-                padding: 50px; /* Optionally add some padding */
-                width: 80%;
-                margin-left: 90px;
-            }
-        }
+    .about-me {
+        white-space: normal; /* Ensures text wraps properly */
+        overflow-y: auto; /* Allows scrolling */
+        font-size: 1.1em; /* Optionally adjust the font size for better readability */
+        padding: 50px; /* Optionally add some padding */
+        width: 80%;
+        margin-left: 90px;
+    }
+}
         @media (max-width: 768px) {
-            .landing-text {
-                width: 90vw;               /* Set width to 90% of viewport width */
-                height: auto;              /* Let height adjust automatically */
-                padding: 20px;             /* Keep padding */
-                font-size: 1.5rem;         /* Adjust font size for mobile (or larger as needed) */
-                top: 55%;                  /* Center vertically */
-                left: 70%;                 /* Center horizontally */
-                transform: translate(-50%, -50%); /* Center both vertically and horizontally */
-                text-align: center;        /* Center text alignment */
-            }
-        }
+    .landing-text {
+        width: 90vw;               /* Set width to 90% of viewport width */
+        height: auto;              /* Let height adjust automatically */
+        padding: 20px;             /* Keep padding */
+        font-size: 1.5rem;         /* Adjust font size for mobile (or larger as needed) */
+        top: 55%;                  /* Center vertically */
+        left: 70%;                 /* Center horizontally */
+        transform: translate(-50%, -50%); /* Center both vertically and horizontally */
+        text-align: center;        /* Center text alignment */
+    }
+}
         .fade-image {
             position: fixed;
             top: 50%;
@@ -233,8 +233,8 @@
 </head>
 <body>
     <div id="portraitOverlay" class="portrait-message" style="display: none;">
-        <img src="ressource/ldp watermark black.png" alt="Logo" id="logo" />
-        <img src="ressource/rotate.png" alt="Rotate Image" id="rotateImage" />
+    <img src="ressource/ldp watermark black.png" alt="Logo" id="logo" />
+    <img src="ressource/rotate.png" alt="Rotate Image" id="rotateImage" />
     </div>
     <header>
         <img src="ressource/headerwhite.png" alt="L-DuP Photography Logo" onclick="showHome()">
@@ -244,83 +244,274 @@
         </div>
     </header>
     <div class="landing-text" id="landingText">
-        <p>Welcome to my photography portfolio. Explore the gallery and learn more about me.</p>
-    </div>
+    <p>
+        Photography is the poetry <br>
+        of light,&nbsp;weaving together <br>
+        moments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dance <br>
+        between&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reality&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspand <br>
+        imagination, inviting us&nbsp;to <br>
+        see the&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;world&nbsp;&nbsp;&nbsp;&nbsp;through <br>
+        new&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;eyes.
+    </p>
+</div>
     <div class="container">
         <div class="sidebar" id="sidebar">
             <ul>
-                <li><a href="#" onclick="showGallery()">Gallery</a></li>
-                <li><a href="#" onclick="showAboutMe()">About Me</a></li>
+                <li><a href="#" onclick="showFolder('folder1')">25.01.2025</a></li>
             </ul>
         </div>
         <div class="gallery" id="gallery">
-            <img src="ressource/your-image-1.jpg" alt="Image 1">
-            <p class="title">Title of Image 1</p>
-            <p class="description">Description of Image 1</p>
-            <audio class="audio-player" controls>
-                <source src="ressource/audio-1.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-            <!-- Repeat for more images -->
+            <p>Select a folder to view the photographs.</p>
         </div>
         <div class="about-me" id="aboutMe">
-            <h1>About Me</h1>
-            <p>
-                I am Lars Weigmann, a photographer from Halle (Saale), Germany. My work focuses on capturing the essence of places and moments. 
-                Through my lens, I aim to tell stories and evoke emotions, blending visuals with ambient sounds that transport you to the scenes I’ve witnessed.
-            </p>
+            <img src="ressource/aboutme.jpg" alt="Your Photo" style="max-height: 200px; width: auto; left: 55%; ">
+            <p>My name is Lars Weigmann, I am 31 years old and based in Halle (Saale), Germany. <br>
+<br>
+I've always been fascinated by the idea of capturing moments in time - preserving memories, emotions, and atmospheres before they fade. <br>
+This passion is what drives my interest in photography and videography. <br>
+<br>
+With this website, I want to share the different moods and moments I encounter, primarily in my hometown Halle and its surroundings, but also beyond. <br>
+<br>
+To make these moments even more immersive, I include short sound recordings from the locations where I take my pictures. This combination of visuals and ambient sounds allows for a deeper connection to the captured scenes. <br>
+<br>
+New sets will be added regularly, so feel free to follow me on this exciting journey of visual storytelling!<br>
+<br>
+——————————
+<br>
+                <br>
+Mein Name ist Lars Weigmann, ich bin 31 Jahre alt und wohne in Halle (Saale), Deutschland. <br>
+<br>
+Ich war schon immer von der Idee fasziniert, Momente festzuhalten - Erinnerungen, Emotionen und Atmosphären zu bewahren, bevor sie verblassen. <br>
+Diese Leidenschaft ist es, die mein Interesse an der Fotografie und Videografie antreibt. <br>
+<br>
+Mit dieser Website möchte ich die verschiedenen Stimmungen und Momente teilen, die mir vor allem in meiner Heimatstadt Halle und ihrer Umgebung, aber auch darüber hinaus begegnen. <br>
+<br>
+Um diese Momente noch eindringlicher zu machen, füge ich kurze Tonaufnahmen von den Orten hinzu, an denen ich meine Bilder mache. Diese Kombination aus Bildern und Umgebungsgeräuschen ermöglicht eine tiefere Verbindung zu den aufgenommenen Szenen. <br>
+<br>
+Es werden regelmäßig neue Sets hinzugefügt, also folgen Sie mir auf dieser spannenden Reise des visuellen Geschichtenerzählens!</p>
         </div>
     </div>
     <script>
-        const gallery = document.getElementById("gallery");
-        const aboutMe = document.getElementById("aboutMe");
-        const landingText = document.getElementById("landingText");
-        const sidebar = document.getElementById("sidebar");
-        const portraitOverlay = document.getElementById("portraitOverlay");
-        const fadeImage = document.getElementById("fadeImage");
-        const logo = document.getElementById("logo");
-        const rotateImage = document.getElementById("rotateImage");
+        const folders = {
+            folder1: [
+                { 
+                    type: 'image', 
+                    src: 'images/01 Steps 1.jpg', 
+                    description: 'Steps 1 | 25.01.2025 | Thüringer Bahnhof, Halle (Saale) | Lars Weigmann' 
+                },
+                { 
+                    type: 'image', 
+                    src: 'images/02 Steps 2.jpg', 
+                    description: 'Steps 2 | 25.01.2025 | Thüringer Bahnhof, Halle (Saale) | Lars Weigmann' 
+                },
+                { 
+                    type: 'image', 
+                    src: 'images/03 Guardian.jpg', 
+                    description: 'Guardian | 25.01.2025 | Thüringer Bahnhof, Halle (Saale) | Lars Weigmann' 
+                },
+                { 
+                    type: 'audio', 
+                    src: 'audio/250125-092102 - Thüringer Bahnhof.mp3', 
+                    description: 'Thüringer Bahnhof, Halle (Saale) | 25.01.2025 09:21 | Lars Weigmann' 
+                },
+                { 
+                    type: 'image', 
+                    src: 'images/04 Top Hat.jpg', 
+                    description: 'Top Hat | 25.01.2025 | Hafenbahntrasse, Halle (Saale) | Lars Weigmann' 
+                },
+                { 
+                    type: 'image', 
+                    src: 'images/05 Peek.jpg', 
+                    description: 'Peek | 25.01.2025 | Bunabrunnen, Merseburger Straße, Halle (Saale) | Lars Weigmann' 
+                },
+                { 
+                    type: 'image', 
+                    src: 'images/06 Edge.jpg', 
+                    description: 'Edge | 25.01.2025 | Bunabrunnen, Merseburger Straße, Halle (Saale) | Lars Weigmann' 
+                },
+                { 
+                    type: 'audio', 
+                    src: 'audio/250125-101100 - Merseburger Straße Bunabrunnen.mp3', 
+                    description: 'Bunabrunnen, Merseburger Straße, Halle (Saale) | 25.01.2025 10:11 | Lars Weigmann' 
+                },
+                { 
+                    type: 'image', 
+                    src: 'images/07 Time.jpg', 
+                    description: 'Time | 25.01.2025 | Lutherkirche, Am Grünen Feld, Halle (Saale) | Lars Weigmann' 
+                },
+            ],
+        };
 
+        function isMobileDevice() {
+            return window.innerWidth <= 768; // Detect mobile devices
+        }
+
+       function showHome() {
+    document.getElementById('sidebar').style.display = 'none';
+    document.getElementById('gallery').style.display = 'none';
+    document.getElementById('aboutMe').style.display = 'none';
+    document.getElementById('landingText').style.display = 'flex'; // Show landing text
+        }
         function showGallery() {
-            gallery.style.display = "block";
-            aboutMe.style.display = "none";
-            landingText.style.display = "none";
-            sidebar.classList.remove("hide-sidebar");
+    document.getElementById('sidebar').style.display = 'block';
+    document.getElementById('gallery').style.display = 'block';
+    document.getElementById('aboutMe').style.display = 'none';
+    document.getElementById('landingText').style.display = 'none'; // Hide landing text
         }
-
         function showAboutMe() {
-            gallery.style.display = "none";
-            aboutMe.style.display = "block";
-            landingText.style.display = "none";
-            sidebar.classList.remove("hide-sidebar");
+    document.getElementById('sidebar').style.display = 'none';
+    document.getElementById('gallery').style.display = 'none';
+    document.getElementById('aboutMe').style.display = 'block';
+    document.getElementById('landingText').style.display = 'none'; // Hide landing text
         }
 
-        function showHome() {
-            gallery.style.display = "none";
-            aboutMe.style.display = "none";
-            landingText.style.display = "flex";
-            sidebar.classList.add("hide-sidebar");
-        }
+        function showFolder(folderName) {
+    const gallery = document.getElementById('gallery');
+    gallery.innerHTML = ''; // Clear gallery content
+    if (folders[folderName]) {
+        folders[folderName].forEach(item => {
+            if (item.type === 'image') {
+                const img = document.createElement('img');
+                img.src = item.src;
 
-        function showPortrait() {
-            portraitOverlay.style.display = "block";
+                // Add click event to open image in new tab
+                img.addEventListener('click', function() {
+                    window.open(item.src, '_blank'); // Open image in new tab on click
+                });
+
+                gallery.appendChild(img);
+
+                // Create a div for the title
+                const title = document.createElement('div');
+                title.className = 'title';
+                title.textContent = item.description.split('|')[0].trim();
+                gallery.appendChild(title);
+
+                // Create a div for the rest of the description
+                const desc = document.createElement('div');
+                desc.className = 'description';
+                const fullDescription = item.description.split('|').slice(1).join('|').trim();
+                desc.textContent = fullDescription;
+                gallery.appendChild(desc);
+            } else if (item.type === 'audio') {
+                const audioContainer = document.createElement('div');
+                audioContainer.className = 'audio-player';
+
+                const audio = document.createElement('audio');
+                audio.controls = true;
+                audio.src = item.src;
+                audioContainer.appendChild(audio);
+
+                const desc = document.createElement('div');
+                desc.className = 'description';
+                desc.textContent = item.description;
+                audioContainer.appendChild(desc);
+
+                gallery.appendChild(audioContainer);
+            }
+        });
+
+        if (isMobileDevice()) {
+            document.getElementById('sidebar').style.display = 'none'; // Hide sidebar on mobile
+            gallery.style.display = 'block';
+        }
+    }
+}
+
+        function checkOrientation() {
+    const portraitOverlay = document.getElementById('portraitOverlay');
+    const sidebar = document.querySelector('header'); // Ensure this selector matches your sidebar
+
+    if (window.innerHeight > window.innerWidth) {
+        // If in portrait mode, show alert and then display images
+        alert("Please rotate your device to landscape mode for the best experience.");
+        portraitOverlay.style.display = 'block'; // Show overlay with images
+        sidebar.classList.add('hide-sidebar'); // Hide the sidebar
+    } else {
+        // If in landscape mode, hide the images and show the sidebar
+        portraitOverlay.style.display = 'none'; // Hide overlay with images
+        sidebar.classList.remove('hide-sidebar'); // Show the sidebar
+    }
+}
+
+// Check orientation on load and on resize
+window.addEventListener("load", checkOrientation);
+window.addEventListener("resize", checkOrientation);
+
+        // Function to display the fade-in effect on mobile
+        function showFadeImage() {
+            const fadeImage = document.getElementById('fadeImage');
+            fadeImage.style.display = 'block';
             setTimeout(() => {
-                portraitOverlay.style.opacity = 1;
-            }, 10);
-        }
+                fadeImage.style.opacity = 1; // Fade in
+            }, 100); // Delay to allow display property to take effect
 
-        function hidePortrait() {
-            portraitOverlay.style.opacity = 0;
             setTimeout(() => {
-                portraitOverlay.style.display = "none";
-            }, 2000);
+                fadeImage.style.opacity = 0; // Fade out
+            }, 5100); // Wait for 5 seconds before starting to fade out
+
+            setTimeout(() => {
+                fadeImage.style.display = 'none'; // Hide after fade out
+            }, 7100); // Wait for fade out to finish
         }
 
-        // Show the portrait overlay when the page loads
-        window.onload = showPortrait;
+        // Show the home page and fade image on load
+        window.onload = function() {
+            showHome();
+            if (isMobileDevice()) {
+                showFadeImage(); // Show the fade image on mobile
+            }
+        };
+        function handleOrientationChange() {
+    const landingText = document.getElementById('landingText');
+    
+    if (isMobileDevice()) {
+        if (window.matchMedia("(orientation: portrait)").matches) {
+            landingText.style.display = 'none'; // Hide in portrait mode
+        } else {
+            landingText.style.display = 'flex'; // Show in landscape mode
+        }
+    } else {
+        landingText.style.display = 'flex'; // Always show on desktop
+    }
+}
 
-        // Hide the portrait overlay after some time
-        setTimeout(hidePortrait, 4000);
+// Listen for orientation changes
+window.addEventListener("orientationchange", handleOrientationChange);
+window.addEventListener("resize", handleOrientationChange);
+
+// Run once on page load
+window.onload = function() {
+    showHome();
+    handleOrientationChange(); // Maintain landing text behavior
+    if (isMobileDevice()) {
+        showFadeImage();
+        const fadeImage = document.getElementById('fadeImage');
+        fadeImage.style.opacity = '0'; // Start hidden
+        fadeImage.style.transition = 'opacity 1.5s ease-in-out'; // Smooth fade-in effect
+        setTimeout(() => {
+            fadeImage.style.opacity = '1'; // Fade in smoothly
+        }, 100);
+    }
+};
+
+// Listen for orientation changes
+window.addEventListener("orientationchange", handleFadeImage);
+window.addEventListener("resize", handleFadeImage);
+function handleFadeImage() {
+    const fadeImage = document.getElementById('fadeImage');
+
+    if (isMobileDevice()) {
+        if (window.matchMedia("(orientation: landscape)").matches) {
+            fadeImage.style.opacity = '0'; // Instantly hide on rotation
+            fadeImage.style.transition = 'none'; // Remove fade effect for instant removal
+        } else {
+            fadeImage.style.opacity = '1'; // Stay visible in portrait
+        }
+    } else {
+        fadeImage.style.opacity = '1'; // Always visible on desktop
+    }
+}
     </script>
 </body>
 </html>
