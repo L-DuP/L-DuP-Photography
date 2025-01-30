@@ -196,6 +196,15 @@
     text-align: left;          /* Align text to the left for better control */
     font-size: 1.5rem;           /* Increase the font size (adjust as needed) */
 }
+        .copyright-text {
+    color: white; /* Text color */
+    font-size: 8px; /* Font size */
+    position: absolute; /* Positioning it at the bottom */
+    bottom: 10px; /* Adjust as needed for spacing from the bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Correct centering */
+    margin: 0; /* Remove default margin */
+}
 
 /* Optional: Adjust spacing for a more square-like appearance */
 .landing-text::after {
@@ -272,6 +281,7 @@
             <a href="#" onclick="showGallery()">Gallery</a>
             <a href="#" onclick="showAboutMe()">About Me</a>
             <a href="#" onclick="showContact()">Contact & Socials</a>
+            <p class="copyright-text">© 2025 Lars Weigmann</p>
         </div>
     </header>
     <div class="landing-text" id="landingText">
